@@ -1,46 +1,50 @@
-"""variables"""
+comments == """multiline """"        /      #
 
-# sher = "harsh bhaiya"
 
-# SheryiansSchool = "students" #pascal case
+"""variables"""   
+-NOT USE== 1)NUMBERAT START LIKE 1VAR    2)NO SPACES   VAR 2=     3) NOT USE SPECIAL CHARACTERS @ , $ ,% ... but _ underscore use karu shakta
 
-# sheryiansSchool = "students" #camel case
-
-# sheryians_school = "students" #snake case
+-WAYS TO WRITE VAR
+SheryiansSchool = "students" #pascal case-
+sheryiansSchool = "students" #camel case- 1ST SMALL , 2ND BIG
+sheryians_school = "students" #snake case- WITH UNSERSCORE
 
 
 
 
 """data types"""
+-INTEGER == + & - NUMBERS
+a = -34          
 
-# a = -34
+-FLOAT ==DECIMAL VALUES  & A/B
+c = 12/3 
 
-# b = 56.8
-# c = 12/3
+-COMPLEX
+v = 34j
+print(type(v))
 
-# v = 34j
-
-# print(type(v))
-
-
-
-# st = '1231243235 dsagaiogiaeb !@#$%^&*'
-
-# print(type(st))
-
-# b = True
-
-# t = False
-
-# print(type(b))
+-BOOLEAN
+b = True              T MUST CAPITAL BELOW F CAPITAL
+t = False
 
 
-"""strings"""
-
-# a = "SHER CODER"
 
 
-# print(a[::])
+-STRINGS== 
+"  DOUBLE INVERTED "   /  'SINGLE '
+st = '1231243235 dsagaiogiaeb !@#$%^&*'
+
+CAN BE POSITIVE INDEXED OR NEGATIVE INDEXING DONE
+     0 1 2 3
+a = "S H E R"
+    -4-3-2-1
+
+STRING SLICING
+a= "sher coder"
+    0123456789
+print(a[0:4:1])=sher    print(a[START:END+1:STEPS])
+print(a[5::])= coder    HERE IN 2ND VALUE DEFAULT TAKES LAST VALUE AND 3 RD VALUE IS DAFAULT +1 STEP
+print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
 # a = 12 
 
