@@ -46,7 +46,20 @@ print(a[0:4:1])=sher    print(a[START:END+1:STEPS])
 print(a[5::])= coder    HERE IN 2ND VALUE DEFAULT TAKES LAST VALUE AND 3 RD VALUE IS DAFAULT +1 STEP
 print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
-# a = 12 
+TYPE CONVERSION==
+1) STR
+- STRING CAN HOLD EVERYTHING SO U GAVE GIVE ANYTHING HERE
+a=12
+a=str(a)       ----a converted as string here
+
+2) INT
+-string cant be converted into integer BECAUSE IT HAS LIMITATION THAN STRING
+a = "asd"
+a=int(a)       WRONG  ONLY NUMBER WHICH IS STORED AS STRING CONVERTED INTO INT
+
+3) bool
+a=0
+prin
 
 # print(12/3)
 
