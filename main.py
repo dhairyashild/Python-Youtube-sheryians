@@ -58,66 +58,67 @@ a = "asd"
 a=int(a)       WRONG  ONLY NUMBER WHICH IS STORED AS STRING CONVERTED INTO INT
 
 3) bool
-a=0
-prin
+a=1
+print(bool(a))        == True
+a=0                    /Flase/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
+print(bool(a))        == False
 
-# print(12/3)
+GIVE VARS IN STRING
+name = "akarsh"
+age = "23"
+print(name,age)  == akarsh,23
+print(f"my name is {name} and my age is {age}")         ----formative string given by f so u can use vars in string
 
-# name = "akarsh"
-# age = "23"
-
-# print(f"my name is {name} and my age is {age}")
-
-# age = int(input("hello what is your age"))
-
-# print(age)
-
-# a = 5
-# b = 32
-
-
-# print(a + b)
-# print(b - a)
-# print(a * b)
-# print(b//a)
-# print(b/a)
-# print(5**100)
-# print(32%5)
+INPUT
+          input("PROMPT JI DISTE")
+age = int(input("hello what is your age"))
+      int TO CONVERT STR INOT INT
+print(age)
 
 
-# print(12+4/2)
+ARITHMETIC OPERATOR
+a = 5
+b = 32
+print(a + b)
+print(b - a)
+print(a * b)
+print(b/a)     ==6.4
+print(b//a)    ==6    IT CONVERTS ABOVE O/P INTO INTEGER
+print(5**2)    ==25   VARG
+print(32%5)    ==2    BAKI 
 
 
-#assignment operators 
-
-# a = 23
+assignment operators 
+a = 23
 
 #compound assignmet operations
+REASSIGN VALUES === LAST LA DILELI VALUE LAGTE
+a = 20
+a = 40    ----- NOW a IS 40
 
-# a = 20
+a=20
+a=a+30   ------NOW a IS 50
+a += 30     AND  a=a+30   BOTH SAME
 
-# a += 20
-# a += 40
-# a += 60
-# a-=
-# a*=
-# a/=
-# a//=
-# a**=
+a-=
+a*=
+a/=
+a//=
+a**=
+print(a)
 
-# print(a)
 
-# a = 12.1
-# b = 12 
 
-# print(a == b)
+COMPARISON OPERATOS == GIVE TRUE / FALSE AS O/P
+a = 12
+b = 12 
+print(a == b)      == TRUE
+print(a != b)    == FALSE
 
-# print(a != b)
-
-# print(a > b)
-# print(45 < 67)
-# print(23 >= 23)
-# print(45 <= 45)
+print(a > b)
+print(45 < 67)
+print(23 >= 23)
+print(45 <= 45)
 
 
 # print(ord("A"))
@@ -125,13 +126,24 @@ prin
 
 # print("ABC" > "ACD")
 
-# print("A" > 34)
+print("A" > 34)           == CANT COMPRE INT WITH STR
 
-# print(12 >20 and 123 > 100 and 34 == 34 and 45 < 90)
 
-# print(12 !=12 or 23 ==45 or 67 == 56 or 10 > 5)
 
-# print(not 12 == 12)
+
+LOGICAL OPERATOR==
+AND ==== ALL MUST TRUE
+print(12 >20 and 123 > 100 and 34 == 34 and 45 < 90)    ==FALSE
+
+OR  ==== ANY 1 MUST TRUE
+ print(12 !=12 or 23 ==45 or 67 == 56 or 10 > 5)     ==TRUE
+
+print(not 12 == 12)      ==AFTER not I WILL REVERSE THE O/P
+
+
+
+
+CONDITIONAL STATEMENTS
 
 #IF else 
 
