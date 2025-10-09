@@ -67,7 +67,7 @@ GIVE VARS IN STRING
 name = "akarsh"
 age = "23"
 print(name,age)  == akarsh,23
-print(f"my name is {name} and my age is {age}")         ----formative string given by f so u can use vars in string
+print(f"my name is {name} and my age is {age}")   --formative string given by f so u can use vars in string  -- f tells Python to replace {variables} with their values inside the string.
 
 INPUT
           input("PROMPT JI DISTE")
