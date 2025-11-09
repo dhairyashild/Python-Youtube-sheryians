@@ -75,6 +75,8 @@ age = int(input("hello what is your age"))
       int TO CONVERT STR INOT INT
 print(age)
 
+------------------------------------------------------------------------------     ONE HOUR 1 HR NOTES---------------------------------------------------------------------------------------------------------------
+# OPERATORS
 
 ARITHMETIC OPERATOR
 a = 5
