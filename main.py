@@ -1,6 +1,5 @@
 comments == """multiline """"        /      #
 
-
 """variables"""   
 -NOT USE== 1)NUMBERAT START LIKE 1VAR    2)NO SPACES   VAR 2=     3) NOT USE SPECIAL CHARACTERS @ , $ ,% ... but _ underscore use karu shakta
 
@@ -9,15 +8,15 @@ SheryiansSchool = "students" #pascal case-
 sheryiansSchool = "students" #camel case- 1ST SMALL , 2ND BIG
 sheryians_school = "students" #snake case- WITH UNSERSCORE
 
-
-
-
 """data types"""
+Natural number = 1,2,3 ...
+Whole nuber = 0,1,2,....
+integers = .... -2,-1,0,1,2.....
 -INTEGER == + & - NUMBERS
 a = -34          
 
 -FLOAT ==DECIMAL VALUES  & A/B
-c = 12/3 
+c = 12/3     /  1.5
 
 -COMPLEX
 v = 34j
@@ -26,9 +25,6 @@ print(type(v))
 -BOOLEAN
 b = True              T MUST CAPITAL BELOW F CAPITAL
 t = False
-
-
-
 
 -STRINGS== 
 "  DOUBLE INVERTED "   /  'SINGLE '
@@ -43,7 +39,7 @@ STRING SLICING
 a= "sher coder"
     0123456789
 print(a[0:4:1])=sher    print(a[START:END+1:STEPS])
-print(a[5::])= coder    HERE IN 2ND VALUE DEFAULT TAKES LAST VALUE AND 3 RD VALUE IS DAFAULT +1 STEP
+print(a[5::])= coder    2ND BLANK VALUE TAKES LAST_LETTER_NUMBER+1   AND     3RD BLANK VALUE IS DAFAULT +1 STEP
 print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
 TYPE CONVERSION==
