@@ -71,17 +71,36 @@ for i in a:                     HERE IT TAKES CHLETTERS FROM a DIRECTLY NO NEED 
 # REMEMBER RANGE START,STOP,STEP DIVIDED BY comma ONLY AND WHILE STRING START:STOP:STEP GIVEN BY :
 
 
+-----------------------------------
+Function: Reusable code block for a task.
+Parameter: Variable name in function definition.     / == varname
+Argument: Value passed to function                   / == var-value
 
+def FUNCTION-NAV(PARA-1,PARA-2,......):
+    BLOCK OF REUSABLE CODE
 
+FUNCTION-NAV(ARGUMENT-1 FOR PARAmeter-1 ,    ARG-2 FOR PARA-2)                   /         FUNCTION-NAV()       ------TO CALL
+OR
+FUNCTION-NAV()                    ------------IF PARAMETER NOT WRITTEN IN BRACKET THEN DIRECT NAME ONLY TO CALL FUNCTION
+-----------------------------------------------------
+#########keyword arg = given in argument with key=value
+def greet(name, message):
+    print(f"{message}, {name}!")
+  
+greet(name="Alice", message="Hello")  # Output: Hello, Alice!
+----------------------------------------------
+## DEFAULT ARG =given in parameter direct
+def greet(name, age=32):
+    print(f"{name} is {age} years old!")
 
+greet("Alice")        ==========Alice is 32 years old!
+greet("Bob", 25)      =========Bob is 25 years old!
+-------------------------------------------
+def add(a, b):
+    return a + b           ---o/p of function from here given to below where we call function
 
-
-
-
-
-
-
-
+result = add(5, 3)         ---given to here where function called function
+print(result)  # 8
 
 
 
