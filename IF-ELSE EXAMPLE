@@ -1,0 +1,135 @@
+# HACKERRANK IF-ELSE: SIMPLE→HARD QUESTIONS + SOLUTIONS
+1)ODD EVEN
+n = int(input())
+if n % 2 == 1:                 ------ ODD
+if n % 2 == 1:                 ------ EVEN
+
+2) LEAP / NON-LEAP if400              elif 4 and not100
+if year % 400 == 0:                            # Div by 400 → Leap ✓
+elif year % 4 == 0 and year % 100 != 0:        # Div by 4 NOT 100 → Leap ✓     
+else:
+    print("Not leap")       # Others → Not leap ✓
+
+3) CHECK NUMBER BETWEEN 2 NUMBERS INT ONLY NOT FLOAT SO 20.999 AND 0.1 NOT INVOLVED SO NEED INT
+# BOTH CODE GIVES U NUMBER BETWWN 2 SO USE ANY1 ON BELOW 2
+if 0<input<21:
+   print("input in between")
+//////////////////////////////
+if input>=0 and input<=20"
+   print("input in between")
+
+
+
+
+# ===== 1. EASY: Check Odd/Even (Basic if-else) =====
+# Q: Input n. Print "Odd" if odd, "Even" if even.
+n = int(input())
+if n % 2 == 1:
+    print("Odd")
+else:
+    print("Even")
+
+# ===== 2. EASY-MED: HackerRank "Python If-Else" =====
+# Q: n odd → "Weird". Even 2-5 → "Not Weird". Even 6-20 → "Weird". Even >20 → "Not Weird".
+#!/usr/bin/env python3
+n = int(input().strip())
+if n % 2 != 0:
+    print("Weird")
+elif n >= 2 and n <= 5:
+    print("Not Weird")
+elif n >= 6 and n <= 20:
+    print("Weird")
+else:
+    print("Not Weird")
+
+# ===== 3. MED: Grade Calculator =====
+# Q: Input marks (0-100). >=90 A, 80-89 B, 70-79 C, 60-69 D, <60 F.
+marks = int(input())
+if marks >= 90:
+    print("A")
+elif marks >= 80:
+    print("B")
+elif marks >= 70:
+    print("C")
+elif marks >= 60:
+    print("D")
+else:
+    print("F")
+
+# ===== 4. MED: Age Group Classifier =====
+# Q: Input age. <13 Child, 13-17 Teen, 18-64 Adult, >=65 Senior.
+age = int(input())
+if age < 13:
+    print("Child")
+elif age < 18:
+    print("Teen")
+elif age < 65:
+    print("Adult")
+else:
+    print("Senior")
+
+# ===== 5. MED-HARD: Leap Year Check =====
+# Q: Input year. Div by 4 YES, but not 100 unless 400 → "Leap" else "Not Leap".
+if year % 400 == 0:
+    print("Leap")           # Div by 400 → Leap ✓
+elif year % 4 == 0 and year % 100 != 0:  
+    print("Leap")           # Div by 4 NOT 100 → Leap ✓                          # MY CODE         
+else:
+    print("Not leap")       # Others → Not leap ✓
+
+
+year = int(input())
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("Leap")
+else:
+    print("Not Leap")
+
+year= int(input("give year"))
+
+# ===== 6. HARD: Multi-Condition Discount =====
+# Q: Input age, amount. age<18 → No disc. 18-60: amt>1000 →10% else 5%. >60: amt>1000 →15% else 10%.
+# Print final amt after disc.
+age, amt = map(int, input().split())
+if age < 18:
+    disc = 0
+elif age <= 60:
+    disc = 0.10 if amt > 1000 else 0.05
+else:
+    disc = 0.15 if amt > 1000 else 0.10
+final = amt * (1 - disc)
+print(f"Final: {final:.2f}")
+//////////////////////////////////////////////////////// MY CODE
+AGE = int(input("give age"))
+AMOUNT = int(input("give amt"))
+
+if AGE < 18:
+    final_amt = AMOUNT              # 0% ✓
+
+elif 17 < AGE <= 60 and AMOUNT > 1000:
+    final_amt = AMOUNT * (1 - 0.1)  # 10% ✓
+elif 17 < AGE <= 60 and AMOUNT < 1000:
+    final_amt = AMOUNT * (1 - 0.05) # 5% ✓ 
+
+elif AGE > 60 and AMOUNT > 1000:
+    final_amt = AMOUNT * (1 - 0.15) # 15% ✓
+elif AGE > 60 and AMOUNT <= 1000:
+    final_amt = AMOUNT * (1 - 0.1)  # 10% ✓
+
+# ===== 7. EXTRA HARD: Nested if Grade w/ Name =====
+# Q: Inputs name, marks. Print "<name> got A/B/C/D/F" based on marks.
+name = input()
+marks = int(input())
+if marks >= 90:
+    grade = "A"
+elif marks >= 80:
+    grade = "B"
+elif marks >= 70:
+    grade = "C"
+elif marks >= 60:
+    grade = "D"
+else:
+    grade = "F"
+print(f"{name} got {grade}")
+
+# Practice: Run each block separately! Simple→Hard order.
+# HackerRank: Submit #2 directly!
