@@ -2,6 +2,9 @@ comments == """multiline """"        /      #
 
 """variables"""   
 -NOT USE== 1)NUMBERAT START LIKE 1VAR    2)NO SPACES   VAR 2=     3) NOT USE SPECIAL CHARACTERS @ , $ ,% ... but _ underscore use karu shakta
+var1= "topicname"
+model.invoke({"keyname"}:var1)    ----above key used as value for dictionary  any  keyname u gave,
+                                   like this also u can give varname as value to dictionary-key
 
 -WAYS TO WRITE VAR
 SheryiansSchool = "students" #pascal case-
