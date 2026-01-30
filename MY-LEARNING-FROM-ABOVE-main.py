@@ -8,6 +8,15 @@ print(name,age)  == akarsh,23
 
 age=input("PROMPT JI DISTE")     /     int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
 
+TYPE CONVERSION==
+var1=str(var1)       ----a converted as string here
+a=int(a)       WRONG  ONLY NUMBER WHICH IS STORED AS STRING CONVERTED INTO INT
+
+a=1
+print(bool(a))        == True
+a=0                    /Flase/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
+print(bool(a))        == False
+
 # OPERATOR
 ARITHMETIC 
 print(b//a)    ==6    IT CONVERTS ABOVE O/P INTO INTEGER MEANS POINT KADTO       
