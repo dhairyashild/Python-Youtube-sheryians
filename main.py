@@ -41,7 +41,7 @@ a = "S H E R"
 STRING SLICING
 a= "sher coder"
     0123456789
-print(a[0:4:1])=sher    print(a[START:END+1:STEPS])
+print(a[0:4:1])=sher    print(a[START :NO.-OF-LETTERS: STEPS])
 print(a[5::])= coder    2ND BLANK VALUE TAKES LAST_LETTER_NUMBER+1   AND     3RD BLANK VALUE IS DAFAULT +1 STEP
 print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
