@@ -6,9 +6,7 @@ print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
 print(name,age)  == akarsh,23
 
-age=int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
-name=input("PROMPT JI DISTE:                                                             ")      
-                          GIVE HERE SPACE SO WHEN IN O/P IT ALSO HAVE SPACE WHEN ASK I/P
+age=input("PROMPT JI DISTE")     /     int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
 
 TYPE CONVERSION==
 var1=str(var1)       ----a converted as string here
@@ -32,13 +30,13 @@ COMPARISON OP
 print(a == b)      == TRUE
 print(a != b)    == FALSE
 
-#IF ELIF ELSE
-if condition1:                                                            if value1=="m":         #ERROR- DOUBLE INVERTED FORGET TO ADD
-                              # RUN Code if condition1 is True
-elif condition2:                                                         elif temp >=0 and temp <=10:
-                              # RUN Code if condition2 is True
+== IF ELIF ELSE=         if:    else:    elif:
+if condition1:                                   if value1=="m":         --ERROR- DOUBLE INVERTED FORGET TO ADD to string
+        # RUN Code if condition1 is True
+elif condition2:                         elif temp >=0 and temp <=10:   --ERROR- condition made = nantar dyave (correct way >=/<=)(wrong =>/ =<)
+        # RUN Code if condition2 is True
 else:
-                              # RUN  Code if all conditions are False
+        # RUN  Code if all conditions are False
 
 
 LOGICAL OPERATOR==
