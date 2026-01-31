@@ -6,7 +6,9 @@ print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
 print(name,age)  == akarsh,23
 
-age=input("PROMPT JI DISTE")     /     int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
+age=int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
+name=input("PROMPT JI DISTE:                                                             ")      
+                          GIVE HERE SPACE SO WHEN IN O/P IT ALSO HAVE SPACE WHEN ASK I/P
 
 TYPE CONVERSION==
 var1=str(var1)       ----a converted as string here
