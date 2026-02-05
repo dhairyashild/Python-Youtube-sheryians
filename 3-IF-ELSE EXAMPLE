@@ -20,6 +20,16 @@ if input>=0 and input<=20"
 
 
 
+in_maintenance = False
+x = 15
+y = 2
+z = 10
+# Evaluation order: 1. not, 2. and, 3. or
+if not in_maintenance and (x > 10 and y < 5) or z == 0:
+    print("Group works")
+
+
+
 
 # ===== 1. EASY: Check Odd/Even (Basic if-else) =====
 # Q: Input n. Print "Odd" if odd, "Even" if even.
