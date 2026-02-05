@@ -27,9 +27,9 @@ ASSIGNMENT OP
 a += 30     AND  a=a+30   BOTH SAME
 
 COMPARISON OP
-print(a == b)      == TRUE
-print(a != b)    == FALSE
-print(45 < 67)
+print(a == b)      == True
+print(a != b)    == False
+print(45 < 67)   == True
 
 == IF ELIF ELSE=         if:    else:    elif:
 if condition1:                                   if value1=="m":         --ERROR- DOUBLE INVERTED FORGET TO ADD to string
