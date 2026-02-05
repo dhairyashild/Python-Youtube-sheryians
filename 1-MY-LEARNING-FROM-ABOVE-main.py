@@ -29,6 +29,7 @@ a += 30     AND  a=a+30   BOTH SAME
 COMPARISON OP
 print(a == b)      == TRUE
 print(a != b)    == FALSE
+print(45 < 67)
 
 == IF ELIF ELSE=         if:    else:    elif:
 if condition1:                                   if value1=="m":         --ERROR- DOUBLE INVERTED FORGET TO ADD to string
