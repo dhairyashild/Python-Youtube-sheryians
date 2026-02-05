@@ -113,8 +113,8 @@ print(a)
 COMPARISON OPERATOS == GIVE TRUE / FALSE AS O/P
 a = 12
 b = 12 
-print(a == b)      == TRUE
-print(a != b)    == FALSE
+print(a == b)      == True
+print(a != b)    == False
 
 print(a > b)
 print(45 < 67)
@@ -134,12 +134,12 @@ print("A" > 34)           == CANT COMPRE INT WITH STR
 
 LOGICAL OPERATOR==
 AND ==== ALL MUST TRUE
-print(12 >20 and 123 > 100 and 34 == 34 and 45 < 90)    ==FALSE
+print(12 >20 and 123 > 100 and 34 == 34 and 45 < 90)    == False
 
 OR  ==== ANY 1 MUST TRUE
- print(12 !=12 or 23 ==45 or 67 == 56 or 10 > 5)     ==TRUE
+ print(12 !=12 or 23 ==45 or 67 == 56 or 10 > 5)     == True
 
-print(not 12 == 12)      ==AFTER not I WILL REVERSE THE O/P
+print(not 12 == 12)      ==AFTER not I WILL REVERSE THE O/P     ---------> False
 
 
 
