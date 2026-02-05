@@ -26,7 +26,7 @@ print(32%5)    ==2    BAKI
 ASSIGNMENT OP
 a += 30     AND  a=a+30   BOTH SAME
 
-COMPARISON OP
+COMPARISON OP  === print chya atal condition varun True/False dete.
 print(a == b)      == True
 print(a != b)    == False
 print(45 < 67)   == True
