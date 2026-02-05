@@ -38,6 +38,15 @@ elif condition2:                         elif temp >=0 and temp <=10:   --ERROR-
 else:
         # RUN  Code if all conditions are False
 
+in_maintenance = False
+x = 15
+y = 2
+z = 10
+# Evaluation order: 1. not, 2. and, 3. or
+if not in_maintenance and (x > 10 and y < 5) or z == 0:
+    print("Group works")
+
+
 
 LOGICAL OPERATOR==
 AND ==== ALL MUST TRUE
