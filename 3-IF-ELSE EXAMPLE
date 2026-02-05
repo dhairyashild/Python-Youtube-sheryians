@@ -2,7 +2,7 @@
 1)ODD EVEN
 n = int(input())
 if n % 2 == 1:                 ------ ODD
-if n % 2 == 1:                 ------ EVEN
+if n % 2 == 0:                 ------ EVEN
 
 2) LEAP / NON-LEAP if400              elif 4 and not100
 if year % 400 == 0:                            # Div by 400 → Leap ✓
