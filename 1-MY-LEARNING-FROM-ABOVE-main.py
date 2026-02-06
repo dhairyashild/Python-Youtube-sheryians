@@ -57,16 +57,18 @@ OR  ==== ANY 1 MUST TRUE
 
 ------------------------------------------------------------    2 hr notes            ----------------------------------------------------------------------------------
 # LOOPS
-FOR LOOP -- for i in range(5,51,5)     /   for i in a:                    (a="RAM IS GREAT") 
-#FOR LOOP NOTES - ONLY NUMBER STOP NEED +1/-1 , STRINGS NO NEED TO ADD +1 AS IT START FROM 0 LIKE BBELOW
-#if reverse in minus number then also stop-1 so increase by -1    ----BUT STRING WORD NO NEED +1 AS IT START FORM 0 
+FOR LOOP NOTES BELOW 4 LINES SARANSH - 
 
-range(start,stop+1/stop-1, step)=range(stop)    ---- because start=1 & step=+1 is default ,u need just stop+1 value to give lke below
-range(0   ,51  ,   1) = range(51)
+range(start      ,stop+1/stop-1 IF NEGATIVE,     step 1/-1 IF REVERSE)      =   range(stop)    ---- because start=1 & step=+1 is default ,u need just stop+1 value to give lke below
+range(0   ,50+1/(-50-1)  ,   1/-1 IF REVESRSE)                            =   range(51) ALSO GIVES SAME RESULT        
+- if reverse in minus number then also stop-1 so increase by -1    ----BUT STRING WORD NO NEED +1 AS IT START FORM 0 
+-- so above case       range(len(a))    =   a       --- both can be used in for loop
+
+
 
 1)#FOR LOOP WITH NUMBERS
 # PRINT -1 TO -10
-for i in range(-1,-11,-1):        ----- ERROR FORGET :     # GIVE LAST NUMBER WITH+1  # U  can use any word instead of i        
+for i in range(-1,-11,-1):        ----- ERROR FORGET :     - GIVE LAST NUMBER WITH+1  # U  can use any word instead of i        
   print(i)                         ---- ONLYLAST NUMBE ALSO WORKS LIKE range(21)    # need indentation space for 2nd line  
 
 
@@ -86,8 +88,7 @@ for i in range(len(a)):                  ===== range(34) runs here , here no nee
 
 for i in a:                     HERE IT TAKES CHLETTERS FROM a DIRECTLY NO NEED OF NUMBERS
   print(i)            -----also gives full of a value but to cut a string we use string
-  
-# REMEMBER RANGE START,STOP,STEP DIVIDED BY comma ONLY AND WHILE STRING START:STOP:STEP GIVEN BY :
+-- so above case       range(len(a))    =   a       --- both can be used in for loop
 
 
 -----------------------------------
