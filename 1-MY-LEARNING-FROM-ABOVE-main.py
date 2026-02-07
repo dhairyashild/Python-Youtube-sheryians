@@ -148,8 +148,68 @@ result = add(5, 3)         ---given to here where function called function
 print(result)  # 8
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LIST===
+
+MUTABLE ,
+IN ORDER (ACCESS BY THAT POSITION) ,
+DUPLICATES ,
+ALL DATAS + FUNCTIONS IN IT
+
+
+numbers = [1, 2, 3, 5, 3]
+
+numbers.append(10);               print("append:", [1, 2, 3, 5, 3, 10])           # ADD AT LAST ✓
+numbers.pop();                    print("pop:", [1, 2, 3, 5, 3])                 # REMOVE LAST ✓
+
+numbers.extend([20,25]);          print("extend:", [1, 2, 3, 5, 3, 20, 25])      # ADD MULTIPLE AT END ✓
+numbers.insert(1,15);             print("insert:", [1, 15, 2, 3, 5, 3, 20, 25])  # INSERT AT INDEX 1 ✓
+numbers.remove(3);                print("remove:", [1, 15, 2, 5, 3, 20, 25])     # REMOVE FIRST 3 ✓
+
+numbers.sort();                 print("sort:", [1, 2, 3, 5, 15, 20, 25])       # SORT ASCENDING ✓
+numbers.reverse();              print("reverse:", [25, 20, 15, 5, 3, 2, 1])     # REVERSE ORDER ✓
+
+new_list = numbers.copy();      print("copy:", [25, 20, 15, 5, 3, 2, 1])        # CREATE COPY ✓
+numbers.clear();                print("clear:", [])                            # EMPTY LIST ✓
+
+numbers.index(5)     # FIND INDEX NUMBER OF 5 ✓
+numbers.count(3)     # COUNT HOW MANY 3 IN LIST ✓
+
+numbers.append(10)             VS         numbers.pop()                 = LAST APPEND VS POP(REMOVE)
+numbers.sort()                 VS         numbers.reverse()             = SORT(ASCEND) VS REVERSE(DESCEND)
+new_list = numbers.copy()      VS         numbers.clear()               = COPY         VS CLEAR LIST
+
+
+l=[0,1,2,3]
+l[0]=55                   ----u can replace any value by indexing, u cant do this in string
+print(l)
+-------->[55, 1, 2, 3]
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TUPLE === IMMUTABLE + comma in GOLbracket ( , )  + oredred  +  tuple unpacking
+
+- IMMUTBLE ---- U CAN CHANGE ANY VLUE UNDER (    )   --BAKI SAME LIST SARAKHE
+
+a=(1)  
+type(a)=== integer
+a(1,)=== tuple la comma hawa
+
+a,b,c=(1,2,3)
+print(a)=1
+      b =2
+      c =3
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SET=== NO DUPLICATES   +  {    }  + UNOREDRED(CANT ACCESS BY INDEXING)
 
 
 
 
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DICTIONARY ==== { KEY1  : VALUE1    ,    KEY2  : "VALUE2"
+
+d = {1:10 ,2:20}
+d([1])  ------>10   - OREDERD access by key   ----
+print(d([1]))    ----->10
+d([1])  =80      - KEY CANT CHANGE BUT VALUES U CAN CHNAGE  see above 10 chnaged to 80
+print(d([1]))    ----->80
 
