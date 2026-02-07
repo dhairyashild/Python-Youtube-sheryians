@@ -63,9 +63,9 @@ range(start      ,stop+1/stop-1 IF NEGATIVE,     step 1/-1 IF REVERSE)      =   
 range(0   ,50+1/(-50-1)  ,   1/-1 IF REVESRSE)                            =   range(51) ALSO GIVES SAME RESULT        
 - if reverse in minus number then also stop-1 so increase by -1    ----BUT STRING WORD NO NEED +1 AS IT START FORM 0 
 -- so above case       range(len(a))    =   a       --- both can be used in for loop
-
-
-
+--w="abcd"
+from above we get that    w= w0=a  +  w1=b  + w2=c   + w3=d
+------------------------------------------------------------------------------
 1)#FOR LOOP WITH NUMBERS
 # PRINT -1 TO -10
 for i in range(-1,-11,-1):        ----- ERROR FORGET :     - GIVE LAST NUMBER WITH+1  # U  can use any word instead of i        
@@ -91,36 +91,63 @@ for i in a:                     HERE IT TAKES CHLETTERS FROM a DIRECTLY NO NEED 
 -- so above case       range(len(a))    =   a       --- both can be used in for loop
 
 
------------------------------------
-Function: Reusable code block for a task.
+--palendromic/not              w[i] remember only
+w=(input("give value"))
+rev=""
+for i in range(len(w)-1,-1,-1):
+    rev=rev+w[i]
+if rev==w:
+    print("palendromic")
+else:
+    print("not")
+
+
+-REVERSE STRING= 4 times reverse must to print   /    print(a[::-1])   also gives revrse
+w="abcd"
+reverse=""
+for i in range(len(w)-1,-1,-1):
+        reverse=reverse+w[i]
+print(reverse)
+---------------> dcba
+-- from above we get that    w= w0=a  +  w1=b  + w2=c   + w3=d
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------    FUNCTION       --------------------------------------------------------------------------------------------------------------------------------------
+Function: Reusable code block for a task.                        
 Parameter: Variable name in function definition.     / == varname
 Argument: Value passed to function                   / == var-value
 
-def FUNCTION-NAV(PARA-1,PARA-2,......):
+
+def FUNCTION-NAME-GIVE-WORD-THAT-U-GET-CODE-SARANSH(PARA-1,PARA-2,......):
     BLOCK OF REUSABLE CODE
 
 FUNCTION-NAV(ARGUMENT-1 FOR PARAmeter-1 ,    ARG-2 FOR PARA-2)                   /         FUNCTION-NAV()       ------TO CALL
 OR
 FUNCTION-NAV()                    ------------IF PARAMETER NOT WRITTEN IN BRACKET THEN DIRECT NAME ONLY TO CALL FUNCTION
 -----------------------------------------------------
-#########keyword arg = given in argument with key=value
+KEYWORD ARGUMENT = given in argument with key=value
+
 def greet(name, message):
     print(f"{message}, {name}!")
   
 greet(name="Alice", message="Hello")  # Output: Hello, Alice!
 ----------------------------------------------
-## DEFAULT ARG =given in parameter direct
+--DEFAULT ARG = given in parameter direct
+
 def greet(name, age=32):
     print(f"{name} is {age} years old!")
 
 greet("Alice")        ==========Alice is 32 years old!
 greet("Bob", 25)      =========Bob is 25 years old!
 -------------------------------------------
+--POSITIONAL ARGUMENT =
+
 def add(a, b):
     return a + b           ---o/p of function from here given to below where we call function
 
 result = add(5, 3)         ---given to here where function called function
 print(result)  # 8
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
