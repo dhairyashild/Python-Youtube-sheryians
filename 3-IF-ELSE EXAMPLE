@@ -143,3 +143,26 @@ print(f"{name} got {grade}")
 
 # Practice: Run each block separately! Simple→Hard order.
 # HackerRank: Submit #2 directly!
+---------------------------------------------------------------------------
+# TIPS
+if (score > 90 and age > 18) or is_special_guest:          # KEEP AND IN BRACKET
+    print("Welcome!")
+---------
+# Instead of this:
+if color == "red" or color == "blue" or color == "green":
+    pass
+
+# Do this:
+if color in ["red", "blue", "green"]:
+    print("Valid color chosen.")
+
+------------------
+if (
+    score >= 90 and 
+    credits >= 120 and 
+    gpa >= 3.5 and 
+    payment_cleared and 
+    not has_disciplinary_record
+):
+    print("Graduation approved!")
+
