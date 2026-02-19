@@ -303,13 +303,25 @@ with open("superman.txt", "a") as file:
 **Key Rule:** WITH = safer (auto-close). Manual = works but risky if forget close().
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OOPS
 
 
+
+1. Class: A logical blueprint or template used to create objects.
+        1st word capital + Never use _ in its name    == eg= class Dog:
+2. Object: A real-world instance of a class that occupies memory.
+Relationship: If a "Car" is the Class (the design), a "Red Tesla" is the Object (the physical thing).
+3. 'class' keyword: Used to define the blueprint for your data structure.
+4. 'def __init__': The constructor that initializes an object's starting values.
+5. 'self' keyword: Represents the specific instance currently being used in code.
+6. Industry Best Practice: Always use 'PascalCase' for naming your Python classes.
+7. Real-time Use: Classes group data and logic to make code reusable.
+
+Next step: Would you like me to explain 'Inheritance' using this same simple format?
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
