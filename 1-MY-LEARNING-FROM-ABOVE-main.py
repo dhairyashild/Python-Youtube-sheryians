@@ -146,6 +146,41 @@ def FUNCTION-NAME-GIVE-WORD-THAT-U-GET-CODE-SARANSH(PARA-1,PARA-2,......):
 FUNCTION-NAV(ARGUMENT-1 FOR PARAmeter-1 ,    ARG-2 FOR PARA-2)                   /         FUNCTION-NAV()       ------TO CALL
 OR
 FUNCTION-NAV()                    ------------IF PARAMETER NOT WRITTEN IN BRACKET THEN DIRECT NAME ONLY TO CALL FUNCTION
+
+
+-- GPT FUNCTION NOTES
+# 1. To send a result back to the caller
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(f"The sum is: {result}")
+
+# 2. To exit a function early (Guard Clause)
+def check_age(age):
+    if age < 18:
+        return "Access Denied"
+    return "Access Granted"
+
+status = check_age(15)
+print(status)
+
+# 3. To return multiple values (as a tuple)
+def get_user_data():
+    name = "Alice"
+    level = 10
+    return name, level
+
+user_name, user_level = get_user_data()
+print(f"User: {user_name}, Level: {user_level}")
+
+# 4. To stop execution (returning None)
+def simple_exit(condition):
+    if condition:
+        return # Returns None and stops here
+    print("This only prints if condition is False")
+
+simple_exit(True)
 -----------------------------------------------------
 KEYWORD ARGUMENT = given in argument with key=value
 
