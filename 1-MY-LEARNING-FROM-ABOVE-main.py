@@ -134,6 +134,123 @@ for a,b in zip(data, ['A','B','C']): print(a,b)  # 20:A 40:B 60:C
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------   WHILE LOOP     --------------------------------------------------------------------------------------------------------------------------------------
+
+
+WHILE LOOP - Interview Qs + LeetCode/HackerRank Problems (Simple Logics)
+All in 1 Block - Key Points + Code Solutions
+
+# 1. COMMON INTERVIEW QUESTIONS
+Q1: What is while loop? Syntax?
+A: Runs while CONDITION True. Syntax: while condition: code
+i=0; while i<5: print(i); i+=1  # 0 1 2 3 4 [web:11]
+
+Q2: for vs while?
+for: Known iterations (range/list). while: Condition-based [web:11]
+
+Q3: Infinite loop? Fix?
+while True: ... → Add break/False condition [web:11]
+
+Q4: break vs continue?
+break: Exit loop. continue: Skip to next iter [web:14]
+
+Q5: while-else?
+else runs if NO break [web:12]
+nums=[4,2,7]; i=0; while i<len(nums): 
+    if nums[i]==7: print(i); break; i+=1
+else: print("Not found")  # Prints 2 [web:11]
+
+## 2. HACKERRANK: LOOPS (Print i**2 for i=0 to n-1)
+if __name__=='__main__':
+    n=int(input())
+    i=0
+    while i<n: print(i**2); i+=1  # Ex: n=5 → 0,1,4,9,16 [web:31][web:35]
+
+## 3. LEETCODE EASY/MEDIUM w/ WHILE (Simple Versions)
+
+# LC 704: Binary Search (while mid)
+def search(nums, target):
+    l,r=0,len(nums)-1
+    while l<=r:
+        mid=(l+r)//2
+        if nums[mid]==target: return mid
+        elif nums[mid]<target: l=mid+1
+        else: r=mid-1
+    return -1  # Sorted array [web:24]
+
+# LC 1: Two Sum Brute (Nested while - O(n^2))
+def twoSum(nums, target):
+    i=0
+    while i<len(nums):
+        j=i+1
+        while j<len(nums):
+            if nums[i]+nums[j]==target: return [i,j]
+            j+=1
+        i+=1
+    return []  # Use hashmap for O(n) [web:21]
+
+# LC 20: Valid Parentheses (while stack)
+def isValid(s):
+    stack=[]
+    pairs={'(':')','{':'}','[':']'}
+    i=0
+    while i<len(s):
+        if s[i] in pairs: stack.append(s[i])
+        elif not stack or pairs[stack.pop()]!=s[i]: return False
+        i+=1
+    return len(stack)==0
+
+# LC 141: LinkedList Cycle (Floyd's - slow/fast pointers)
+# Slow while logic (simple counter version)
+def hasCycle(head):
+    seen=set()
+    cur=head
+    while cur:
+        if cur in seen: return True
+        seen.add(cur)
+        cur=cur.next
+    return False  # While cur.next [web:24]
+
+# LC 202: Happy Number (while not seen)
+def isHappy(n):
+    seen=set()
+    while n!=1 and n not in seen:
+        seen.add(n)
+        n=sum(int(d)**2 for d in str(n))
+    return n==1
+
+# LC 876: Middle of LinkedList (two pointers while)
+def middleNode(head):
+    slow=fast=head
+    while fast and fast.next:
+        slow=slow.next
+        fast=fast.next.next
+    return slow
+
+## 4. SIMPLE PRACTICE PROBLEMS (Interview Style)
+# Print 1 to N
+n=5; i=1; while i<=n: print(i); i+=1  # 1 2 3 4 5
+
+# Sum 1 to N
+n=5; i=1; s=0; while i<=n: s+=i; i+=1; print(s)  # 15
+
+# Factorial
+n=5; i=1; f=1; while i<=n: f*=i; i+=1; print(f)  # 120
+
+# Fibonacci (first n)
+n=5; a,b=0,1; i=0; while i<n: print(a); a,b=b,a+b; i+=1  # 0 1 1 2 3
+
+# Reverse digits
+n=123; rev=0; while n>0: rev=rev*10 + n%10; n//=10; print(rev)  # 321
+
+## TIPS for INTERVIEWS
+# - ALWAYS update counter/pointer INSIDE loop (avoid infinite)
+# - Use while for: Binary search, Two pointers, Unknown iterations
+# - Time: O(n) single, O(n^2) nested → Optimize with hash/pointers
+# - Test edges: n=0, n=1, empty list [web:11][web:21]
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------    FUNCTION       --------------------------------------------------------------------------------------------------------------------------------------
 Function: Reusable code block for a task.                        
 Parameter: Variable name in function definition.     / == varname
