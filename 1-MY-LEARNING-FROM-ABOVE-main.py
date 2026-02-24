@@ -5,7 +5,10 @@ FUNCTION = JECHYA NANTAR () eto tyala function mhanatat eg- print() , range(), i
 print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
 print(name,age)  == akarsh,23
-
+print("Hello", end=" ");           ----  print came with \n but u can replace it with anything like = " " / "_"
+print("World")
+-----------> 
+Hello World
 age=input("PROMPT JI DISTE")     /     int(input("hello what is your age")) #ERROR-int need to get number from user so math apply with them
 
 TYPE CONVERSION==
@@ -13,8 +16,8 @@ var1=str(var1)       ----a converted as string here
 a=int(a)       WRONG  ONLY NUMBER WHICH IS STORED AS STRING CONVERTED INTO INT
 
 a=1
-print(bool(a))        == True
-a=0                    /Flase/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
+print(bool(a))        == True  - only if a   has any value given
+a=0                    /False/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
 print(bool(a))        == False
 
 # OPERATOR
@@ -68,8 +71,8 @@ from above we get that    w= w0=a  +  w1=b  + w2=c   + w3=d
 ------------------------------------------------------------------------------
 1)#FOR LOOP WITH NUMBERS
 # PRINT -1 TO -10
-for i in range(-1,-11,-1):        ----- ERROR FORGET :     - GIVE LAST NUMBER WITH+1  # U  can use any word instead of i        
-  print(i)                         ---- ONLYLAST NUMBE ALSO WORKS LIKE range(21)    # need indentation space for 2nd line  
+for i in range(-11,-1,-1):        ----- ERROR FORGET :     - GIVE MIDDLE NUMBER WITH+1  # U  can use any word instead of i        
+  print(i)                         ---- ONLY LAST NUMBER ALSO WORKS LIKE range(21)    # need indentation space for 2nd line  
 
 
 PROGRAMME-1    PRINT TABLEOF 5                       table of any number ==take n as i/p
@@ -83,7 +86,7 @@ print(len(name))                     ========17
 a = "SHERYIANS TEACHES INDUSTRY THINGS"
 print(len(a))                            =====34
 for i in range(len(a)):                  ===== range(34) runs here , here no need to add +1 to stop number as len gives +1 number already
-    print(a[i])                          ===== (a[34])      = (a[start:stop:step])            
+    print(a[i], end="\n")                ===== (a[34])      = (a[start:stop:step])        == u can replace default \n with " "/"_"/"anything      
 
 
 for i in a:                     HERE IT TAKES CHLETTERS FROM a DIRECTLY NO NEED OF NUMBERS
@@ -120,7 +123,7 @@ data = [10, 20, 30, 40, 50]
 for x in data: print(x)                    # 10 20 30 40 50
 
 # 2) INDEX - enumerate()
-for i,x in enumerate(data): print(i,x)     # 0:10 1:20 2:30...
+for i,x in enumerate(data): print(i,x, end=" ")     # 0:10 1:20 2:30...
 
 # 3) MODIFY - Change items  
 for i in range(len(data)): data[i] *= 2    # [20,40,60,80,100]
