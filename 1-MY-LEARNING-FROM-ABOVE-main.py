@@ -323,16 +323,8 @@ KEYWORD ARGUMENT = given in argument with key=value
 def greet(name, message):
     print(f"{message}, {name}!")
   
-greet(name="Alice", message="Hello")  # Output: Hello, Alice!
-----------------------------------------------
---DEFAULT ARG = given in parameter direct
-
-def greet(name, age=32):
-    print(f"{name} is {age} years old!")
-
-greet("Alice")        ==========Alice is 32 years old!
-greet("Bob", 25)      =========Bob is 25 years old!
--------------------------------------------
+greet( message="Hello",name="Alice")  # Output: Hello, Alice!    --   U CAN CHNAGE SEQUENCE  AS HERE  name used later
+-----------------------------------------------------------------------------------------
 --POSITIONAL ARGUMENT =
 
 def add(a, b):
@@ -340,6 +332,17 @@ def add(a, b):
 
 result = add(5, 3)         ---given to here where function called function
 print(result)  # 8
+
+--------------------------------------------------------------------------------------
+--DEFAULT ARG = given in parameter direct
+
+def greet(name, age=32):
+    print(f"{name} is {age} years old!")
+
+greet("Alice")        ==========Alice is 32 years old!
+greet("Bob", 25)      =========Bob is 25 years old!
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LIST===
