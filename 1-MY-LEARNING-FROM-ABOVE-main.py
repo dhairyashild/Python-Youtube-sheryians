@@ -181,6 +181,9 @@ def search(nums, target):
         else: r=mid-1
     return -1  # Sorted array [web:24]
 
+
+
+
 # LC 1: Two Sum Brute (Nested while - O(n^2))
 def twoSum(nums, target):
     i=0
@@ -191,6 +194,17 @@ def twoSum(nums, target):
             j+=1
         i+=1
     return []  # Use hashmap for O(n) [web:21]
+
+# my code
+def twoSum(nums, target=9):
+    for i,n in enumerate(nums):
+        need=target-n
+        if need in nums:
+            return i,nums.index(need)
+        
+print(twoSum([13,4,3,8,3,5]))
+
+
 
 # LC 20: Valid Parentheses (while stack)
 def isValid(s):
