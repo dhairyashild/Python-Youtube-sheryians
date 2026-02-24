@@ -303,9 +303,11 @@ print(status)
 def get_user_data():
     name = "Alice"
     level = 10
-    return name, level
+    return name, level # Provider: Throws values out in order
 
-user_name, user_level = get_user_data()
+# LHS catches <--- RHS provides
+user_name, user_level = get_user_data() # LHS = vars to store; RHS = call function
+
 print(f"User: {user_name}, Level: {user_level}")
 
 # 4. To stop execution (returning None)
