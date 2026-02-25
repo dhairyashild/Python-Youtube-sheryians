@@ -15,6 +15,25 @@ TYPE CONVERSION==
 var1=str(var1)       ----a converted as string here
 a=int(a)       WRONG  ONLY NUMBER WHICH IS STORED AS STRING CONVERTED INTO INT
 
+Numeric Conversions
+python
+int("5")      # str → int
+float("3.14") # str → float  
+int(3.9)      # float → int (truncates)
+str(42)       # int/float → str
+bool(0)       # 0→False, non-zero→True
+complex(3)    # int → complex
+
+Collection Conversions
+python
+list("abc")    # str → list ['a','b','c']
+set([1,2,2])   # list → set {1,2}
+tuple([1,2])   # list → tuple
+list((1,2))    # tuple → list
+dict(a=1,b=2)  # kwargs → dict
+
+
+---------------------------------
 a=1
 print(bool(a))        == True  - only if a   has any value given
 a=0                    /False/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
