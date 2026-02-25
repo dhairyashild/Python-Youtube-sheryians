@@ -1,0 +1,1139 @@
+"""
+================================================================================
+                DSA INTERVIEW CRASH COURSE - TOP 50+ LEETCODE PATTERNS
+================================================================================
+Topics: Arrays, Hashing, Two Pointers, Sliding Window, Stack, Linked Lists, 
+         Trees, Graphs, Heap, Dynamic Programming, Backtracking
+--------------------------------------------------------------------------------
+"""
+
+# =================================================================================
+# I. ARRAYS & HASHING (Most Asked - Warmup)
+# =================================================================================
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 1: Two Sum (LeetCode 1) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given an array of integers nums and an integer target, return indices of the 
+two numbers such that they add up to target. You may assume that each input 
+would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+
+Example: nums = [2,7,11,15], target = 9 -> [0,1]
+"""
+def two_sum(nums, target):
+    seen = {}  # value -> index
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+"""MY CODE 
+def twosum(nums,t):                                # === for + need +  if
+ 
+    for i in range(len(nums)):
+        need=t-nums[i]                             # need must in for loop   
+        if need in nums and need!=nums[i]:
+            return (i, nums.index(need))           # FIXED: Use nums.index(need) instead of nums[need] #
+
+print(twosum([2,2,3,44,5,7],9))
+-------------------------------------------------------------------------------
+PROBLEM 2: Contains Duplicate (LeetCode 217) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given an integer array nums, return true if any value appears at least twice 
+in the array, and return false if every element is distinct.
+
+Example: nums = [1,2,3,1] -> true | nums = [1,2,3,4] -> false
+"""
+def contains_duplicate(nums):
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+
+# Alternative one-liner
+def contains_duplicate_short(nums):
+    return len(nums) != len(set(nums))
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 3: Valid Anagram (LeetCode 242) - FREQUENCY: 9/10
+### LOGIC FOR ANAGRAM- counter() gives out dict with count of elements in it
+from collections import Counter
+# Counts EVERYTHING automatically!
+Counter("hello")     # {'l':2, 'h':1, 'e':1, 'o':1}
+Counter([1,1,2,2,2]) # {1:2, 2:3}
+
+-------------------------------------------------------------------------------
+Given two strings s and t, return true if t is an anagram of s, and false 
+otherwise. An anagram is a word formed by rearranging letters of another.
+
+Example: s = "anagram", t = "nagaram" -> true | s = "rat", t = "car" -> false
+"""
+from collections import Counter
+
+def is_anagram(s, t):
+    return Counter(s) == Counter(t)
+
+# Without Counter
+def is_anagram_manual(s, t):
+    if len(s) != len(t):
+        return False
+    count = [0] * 26
+    for c in s:
+        count[ord(c) - ord('a')] += 1
+    for c in t:
+        count[ord(c) - ord('a')] -= 1
+        if count[ord(c) - ord('a')] < 0:
+            return False
+    return all(c == 0 for c in count)
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 4: Group Anagrams (LeetCode 49) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given an array of strings strs, group the anagrams together. You can return 
+the answer in any order. An anagram is a word formed by rearranging letters.
+
+Example: strs = ["eat","tea","tan","ate","nat","bat"] -> 
+         [["bat"],["nat","tan"],["ate","eat","tea"]]
+"""
+def group_anagrams(strs):
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for s in strs:
+        key = ''.join(sorted(s))
+        groups[key].append(s)
+    return list(groups.values())
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 5: Top K Frequent Elements (LeetCode 347) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given an integer array nums and an integer k, return the k most frequent 
+elements. You may return the answer in any order.
+
+Example: nums = [1,1,1,2,2,3], k = 2 -> [1,2]
+"""
+def top_k_frequent(nums, k):
+    from collections import Counter
+    import heapq
+    
+    count = Counter(nums)
+    return heapq.nlargest(k, count.keys(), key=count.get)
+
+# Bucket sort approach (optimal O(n))
+def top_k_frequent_bucket(nums, k):
+    from collections import Counter
+    
+    freq = Counter(nums)
+    bucket = [[] for _ in range(len(nums) + 1)]
+    
+    for num, count in freq.items():
+        bucket[count].append(num)
+    
+    result = []
+    for i in range(len(bucket) - 1, 0, -1):
+        result.extend(bucket[i])
+        if len(result) >= k:
+            return result[:k]
+    return result
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 6: Product of Array Except Self (LeetCode 238) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given an integer array nums, return an array answer such that answer[i] is 
+equal to the product of all the elements of nums except nums[i]. You must 
+write an algorithm that runs in O(n) time and without using division.
+
+Example: nums = [1,2,3,4] -> [24,12,8,6]
+"""
+def product_except_self(nums):
+    n = len(nums)
+    result = [1] * n
+    
+    # Left pass: product of elements to the left
+    left = 1
+    for i in range(n):
+        result[i] = left
+        left *= nums[i]
+    
+    # Right pass: multiply by product of elements to the right
+    right = 1
+    for i in range(n-1, -1, -1):
+        result[i] *= right
+        right *= nums[i]
+    
+    return result
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 7: Valid Sudoku (LeetCode 36) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be 
+validated according to rules: each row, column, and 3x3 sub-box contains 
+digits 1-9 without repetition.
+
+Example: board = 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]] -> true
+"""
+def is_valid_sudoku(board):
+    rows = [set() for _ in range(9)]
+    cols = [set() for _ in range(9)]
+    boxes = [set() for _ in range(9)]
+    
+    for i in range(9):
+        for j in range(9):
+            num = board[i][j]
+            if num == '.':
+                continue
+            
+            box_idx = (i // 3) * 3 + (j // 3)
+            
+            if (num in rows[i] or num in cols[j] or num in boxes[box_idx]):
+                return False
+            
+            rows[i].add(num)
+            cols[j].add(num)
+            boxes[box_idx].add(num)
+    
+    return True
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 8: Encode and Decode Strings (LeetCode 271) - FREQUENCY: 6/10
+-------------------------------------------------------------------------------
+Design an algorithm to encode a list of strings to a single string and decode 
+it back to the original list. The encoded string should be sent over network.
+
+Example: ["hello","world"] -> encode -> decode -> ["hello","world"]
+"""
+def encode(strs):
+    """Encodes a list of strings to a single string."""
+    return ''.join(f"{len(s)}#{s}" for s in strs)
+
+def decode(s):
+    """Decodes a single string to a list of strings."""
+    result = []
+    i = 0
+    while i < len(s):
+        j = i
+        while s[j] != '#':
+            j += 1
+        length = int(s[i:j])
+        result.append(s[j+1:j+1+length])
+        i = j + 1 + length
+    return result
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 9: Longest Consecutive Sequence (LeetCode 128) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given an unsorted array of integers nums, return the length of the longest 
+consecutive elements sequence. Must run in O(n) time.
+
+Example: nums = [100,4,200,1,3,2] -> 4 (sequence [1,2,3,4])
+"""
+def longest_consecutive(nums):
+    num_set = set(nums)
+    longest = 0
+    
+    for num in num_set:
+        # Check if it's start of a sequence
+        if num - 1 not in num_set:
+            curr = num
+            length = 1
+            
+            while curr + 1 in num_set:
+                curr += 1
+                length += 1
+            
+            longest = max(longest, length)
+    
+    return longest
+
+
+# =================================================================================
+# II. TWO POINTERS (Most Asked - Medium)
+# =================================================================================
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 10: Valid Palindrome (LeetCode 125) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+A phrase is a palindrome if it reads the same forward and backward after 
+converting to lowercase and removing non-alphanumeric characters.
+
+Example: "A man, a plan, a canal: Panama" -> true | "race a car" -> false
+"""
+def is_palindrome(s):
+    left, right = 0, len(s) - 1
+    
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        
+        if s[left].lower() != s[right].lower():
+            return False
+        
+        left += 1
+        right -= 1
+    
+    return True
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 11: Two Sum II - Input Array Sorted (LeetCode 167) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given a 1-indexed sorted array and target, return indices of two numbers that 
+add to target. Use constant extra space.
+
+Example: numbers = [2,7,11,15], target = 9 -> [1,2]
+"""
+def two_sum_sorted(numbers, target):
+    left, right = 0, len(numbers) - 1
+    
+    while left < right:
+        curr_sum = numbers[left] + numbers[right]
+        if curr_sum == target:
+            return [left + 1, right + 1]
+        elif curr_sum < target:
+            left += 1
+        else:
+            right -= 1
+    
+    return []
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 12: 3Sum (LeetCode 15) - FREQUENCY: 10/10 (CRITICAL)
+-------------------------------------------------------------------------------
+Given an integer array nums, return all triplets [nums[i], nums[j], nums[k]] 
+such that i != j, i != k, j != k, and nums[i] + nums[j] + nums[k] = 0.
+No duplicate triplets allowed.
+
+Example: nums = [-1,0,1,2,-1,-4] -> [[-1,-1,2],[-1,0,1]]
+"""
+def three_sum(nums):
+    nums.sort()
+    result = []
+    n = len(nums)
+    
+    for i in range(n - 2):
+        # Skip duplicates
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+        
+        left, right = i + 1, n - 1
+        
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+    
+    return result
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 13: Container With Most Water (LeetCode 11) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given n non-negative integers representing height of vertical lines, find two 
+lines that together with x-axis form container holding the most water.
+
+Example: height = [1,8,6,2,5,4,8,3,7] -> 49
+"""
+def max_area(height):
+    left, right = 0, len(height) - 1
+    max_water = 0
+    
+    while left < right:
+        width = right - left
+        h = min(height[left], height[right])
+        max_water = max(max_water, width * h)
+        
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    
+    return max_water
+
+
+# =================================================================================
+# III. SLIDING WINDOW (Most Asked for Freshers)
+# =================================================================================
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 14: Best Time to Buy and Sell Stock (LeetCode 121) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+You are given an array prices where prices[i] is price of stock on day i.
+Find maximum profit by buying low and selling high (one transaction).
+
+Example: prices = [7,1,5,3,6,4] -> 5 (buy at 1, sell at 6)
+"""
+def max_profit(prices):
+    min_price = float('inf')
+    max_profit = 0
+    
+    for price in prices:
+        min_price = min(min_price, price)
+        max_profit = max(max_profit, price - min_price)
+    
+    return max_profit
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 15: Longest Substring Without Repeating Characters (LC 3) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given a string s, find length of longest substring without repeating characters.
+
+Example: s = "abcabcbb" -> 3 ("abc") | s = "bbbbb" -> 1 ("b")
+"""
+def length_of_longest_substring(s):
+    char_set = set()
+    left = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 16: Longest Repeating Character Replacement (LeetCode 424) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Given a string s and integer k, you can replace any k characters. Return 
+length of longest substring containing the same letter you can get.
+
+Example: s = "ABAB", k = 2 -> 4 (replace both A's to B's or vice versa)
+"""
+def character_replacement(s, k):
+    count = {}
+    left = 0
+    max_freq = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        count[s[right]] = count.get(s[right], 0) + 1
+        max_freq = max(max_freq, count[s[right]])
+        
+        # If window size - max_freq > k, shrink window
+        while (right - left + 1) - max_freq > k:
+            count[s[left]] -= 1
+            left += 1
+        
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 17: Minimum Window Substring (LeetCode 76) - FREQUENCY: 8/10 (HARD)
+-------------------------------------------------------------------------------
+Given two strings s and t, return minimum window substring of s containing 
+all characters of t. If no such substring, return empty string.
+
+Example: s = "ADOBECODEBANC", t = "ABC" -> "BANC"
+"""
+def min_window(s, t):
+    from collections import Counter
+    
+    if not s or not t:
+        return ""
+    
+    dict_t = Counter(t)
+    required = len(dict_t)
+    
+    left = right = 0
+    formed = 0
+    window_counts = {}
+    
+    ans = float("inf"), None, None  # length, left, right
+    
+    while right < len(s):
+        char = s[right]
+        window_counts[char] = window_counts.get(char, 0) + 1
+        
+        if char in dict_t and window_counts[char] == dict_t[char]:
+            formed += 1
+        
+        while left <= right and formed == required:
+            char = s[left]
+            
+            # Save smallest window
+            if right - left + 1 < ans[0]:
+                ans = (right - left + 1, left, right)
+            
+            window_counts[char] -= 1
+            if char in dict_t and window_counts[char] < dict_t[char]:
+                formed -= 1
+            
+            left += 1
+        
+        right += 1
+    
+    return "" if ans[0] == float("inf") else s[ans[1]:ans[2] + 1]
+
+
+# =================================================================================
+# IV. STACK (Important for Freshers)
+# =================================================================================
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 18: Valid Parentheses (LeetCode 20) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given a string containing just '(', ')', '{', '}', '[' and ']', determine if 
+input string is valid (open brackets closed in correct order).
+
+Example: "()[]{}" -> true | "([)]" -> false
+"""
+def is_valid_parentheses(s):
+    stack = []
+    mapping = {")": "(", "}": "{", "]": "["}
+    
+    for char in s:
+        if char in mapping:
+            top = stack.pop() if stack else '#'
+            if mapping[char] != top:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 19: Min Stack (LeetCode 155) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Design a stack that supports push, pop, top, and retrieving minimum element 
+in constant time.
+
+Example: 
+MinStack minStack = new MinStack();
+minStack.push(-2); minStack.push(0); minStack.push(-3); 
+minStack.getMin() -> -3; minStack.pop(); minStack.top() -> 0; minStack.getMin() -> -2
+"""
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.min_stack = []  # Keep track of min at each state
+    
+    def push(self, val):
+        self.stack.append(val)
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+        else:
+            self.min_stack.append(self.min_stack[-1])
+    
+    def pop(self):
+        self.stack.pop()
+        self.min_stack.pop()
+    
+    def top(self):
+        return self.stack[-1]
+    
+    def getMin(self):
+        return self.min_stack[-1]
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 20: Evaluate Reverse Polish Notation (LeetCode 150) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Evaluate value of arithmetic expression in Reverse Polish Notation (postfix).
+Valid operators: +, -, *, /. Division truncates toward zero.
+
+Example: tokens = ["2","1","+","3","*"] -> 9 ((2+1)*3)
+"""
+def eval_rpn(tokens):
+    stack = []
+    
+    for token in tokens:
+        if token not in "+-*/":
+            stack.append(int(token))
+        else:
+            b = stack.pop()
+            a = stack.pop()
+            
+            if token == '+':
+                stack.append(a + b)
+            elif token == '-':
+                stack.append(a - b)
+            elif token == '*':
+                stack.append(a * b)
+            else:  # token == '/'
+                stack.append(int(a / b))  # truncates toward zero
+    
+    return stack[0]
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 21: Daily Temperatures (LeetCode 739) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given array temperatures, return an array answer where answer[i] is number of 
+days you have to wait after i-th day to get warmer temperature.
+
+Example: temperatures = [73,74,75,71,69,72,76,73] -> [1,1,4,2,1,1,0,0]
+"""
+def daily_temperatures(temperatures):
+    n = len(temperatures)
+    result = [0] * n
+    stack = []  # store indices
+    
+    for i in range(n):
+        while stack and temperatures[i] > temperatures[stack[-1]]:
+            idx = stack.pop()
+            result[idx] = i - idx
+        stack.append(i)
+    
+    return result
+
+
+# =================================================================================
+# V. LINKED LISTS (Very Important for Freshers)
+# =================================================================================
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 22: Reverse Linked List (LeetCode 206) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given head of singly linked list, reverse the list and return its head.
+
+Example: 1->2->3->4->5 -> 5->4->3->2->1
+"""
+def reverse_list(head):
+    prev = None
+    curr = head
+    
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    
+    return prev
+
+# Recursive solution
+def reverse_list_recursive(head):
+    if not head or not head.next:
+        return head
+    
+    new_head = reverse_list_recursive(head.next)
+    head.next.next = head
+    head.next = None
+    
+    return new_head
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 23: Merge Two Sorted Lists (LeetCode 21) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Merge two sorted linked lists and return it as sorted new list.
+
+Example: 1->2->4, 1->3->4 -> 1->1->2->3->4->4
+"""
+def merge_two_lists(list1, list2):
+    dummy = ListNode(0)
+    curr = dummy
+    
+    while list1 and list2:
+        if list1.val <= list2.val:
+            curr.next = list1
+            list1 = list1.next
+        else:
+            curr.next = list2
+            list2 = list2.next
+        curr = curr.next
+    
+    curr.next = list1 if list1 else list2
+    
+    return dummy.next
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 24: Linked List Cycle (LeetCode 141) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given head of linked list, determine if it has a cycle (pos represents index 
+where tail connects to -1 if no cycle).
+
+Example: 3->2->0->-4 (pos=1 connects back to 2) -> true
+"""
+def has_cycle(head):
+    if not head or not head.next:
+        return False
+    
+    slow = head
+    fast = head.next
+    
+    while slow != fast:
+        if not fast or not fast.next:
+            return False
+        slow = slow.next
+        fast = fast.next.next
+    
+    return True
+
+# Alternative (set approach)
+def has_cycle_set(head):
+    seen = set()
+    curr = head
+    
+    while curr:
+        if curr in seen:
+            return True
+        seen.add(curr)
+        curr = curr.next
+    
+    return False
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 25: Reorder List (LeetCode 143) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Reorder list to L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → ... in-place.
+
+Example: 1->2->3->4 -> 1->4->2->3
+"""
+def reorder_list(head):
+    if not head or not head.next:
+        return
+    
+    # Find middle
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    
+    # Reverse second half
+    prev = None
+    curr = slow.next
+    slow.next = None  # Split into two lists
+    
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    
+    # Merge two lists
+    first, second = head, prev
+    while second:
+        temp1 = first.next
+        temp2 = second.next
+        
+        first.next = second
+        second.next = temp1
+        
+        first = temp1
+        second = temp2
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 26: Remove Nth Node From End of List (LeetCode 19) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given head of linked list, remove nth node from end and return head.
+
+Example: 1->2->3->4->5, n=2 -> 1->2->3->5
+"""
+def remove_nth_from_end(head, n):
+    dummy = ListNode(0)
+    dummy.next = head
+    first = second = dummy
+    
+    # Advance first by n+1 steps
+    for _ in range(n + 1):
+        first = first.next
+    
+    # Move first to end, second stays behind
+    while first:
+        first = first.next
+        second = second.next
+    
+    # Remove nth node
+    second.next = second.next.next
+    
+    return dummy.next
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 27: Add Two Numbers (LeetCode 2) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+You are given two non-empty linked lists representing two non-negative integers.
+The digits are stored in reverse order, and each node contains a single digit.
+Add the two numbers and return the sum as a linked list.
+
+Example: (2 -> 4 -> 3) + (5 -> 6 -> 4) = 7 -> 0 -> 8 (342 + 465 = 807)
+"""
+def add_two_numbers(l1, l2):
+    dummy = ListNode(0)
+    curr = dummy
+    carry = 0
+    
+    while l1 or l2 or carry:
+        val1 = l1.val if l1 else 0
+        val2 = l2.val if l2 else 0
+        
+        total = val1 + val2 + carry
+        carry = total // 10
+        curr.next = ListNode(total % 10)
+        curr = curr.next
+        
+        if l1: l1 = l1.next
+        if l2: l2 = l2.next
+    
+    return dummy.next
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 28: Find the Duplicate Number (LeetCode 287) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Given array containing n+1 integers where each integer is between 1 and n,
+find the duplicate one. Cannot modify array, constant space.
+
+Example: nums = [1,3,4,2,2] -> 2
+"""
+def find_duplicate(nums):
+    # Floyd's Tortoise and Hare (cycle detection)
+    slow = fast = nums[0]
+    
+    # Find meeting point
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
+    
+    # Find entrance to cycle (duplicate)
+    slow = nums[0]
+    while slow != fast:
+        slow = nums[slow]
+        fast = nums[fast]
+    
+    return slow
+
+
+# =================================================================================
+# VI. TREES (Very Important for Freshers)
+# =================================================================================
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 29: Maximum Depth of Binary Tree (LeetCode 104) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given root of binary tree, return its maximum depth (number of nodes along 
+longest path from root down to farthest leaf).
+
+Example: [3,9,20,null,null,15,7] -> 3
+"""
+def max_depth(root):
+    if not root:
+        return 0
+    
+    return 1 + max(max_depth(root.left), max_depth(root.right))
+
+# Iterative BFS
+def max_depth_bfs(root):
+    if not root:
+        return 0
+    
+    from collections import deque
+    queue = deque([root])
+    depth = 0
+    
+    while queue:
+        level_size = len(queue)
+        for _ in range(level_size):
+            node = queue.popleft()
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        depth += 1
+    
+    return depth
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 30: Same Tree (LeetCode 100) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given roots of two binary trees, check if they are structurally identical
+and nodes have same value.
+
+Example: [1,2,3] and [1,2,3] -> true
+"""
+def is_same_tree(p, q):
+    if not p and not q:
+        return True
+    if not p or not q:
+        return False
+    if p.val != q.val:
+        return False
+    
+    return is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right)
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 31: Invert Binary Tree (LeetCode 226) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Given root of binary tree, invert the tree (mirror) and return its root.
+
+Example: [4,2,7,1,3,6,9] -> [4,7,2,9,6,3,1]
+"""
+def invert_tree(root):
+    if not root:
+        return None
+    
+    # Swap children
+    root.left, root.right = root.right, root.left
+    
+    invert_tree(root.left)
+    invert_tree(root.right)
+    
+    return root
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 32: Binary Tree Maximum Path Sum (LeetCode 124) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given root of binary tree, return maximum path sum. Path can start/end at any
+node and must go along parent-child connections.
+
+Example: [-10,9,20,null,null,15,7] -> 42 (15+20+7)
+"""
+def max_path_sum(root):
+    def dfs(node):
+        nonlocal max_sum
+        if not node:
+            return 0
+        
+        left = max(dfs(node.left), 0)
+        right = max(dfs(node.right), 0)
+        
+        # Path passing through current node
+        curr_sum = node.val + left + right
+        max_sum = max(max_sum, curr_sum)
+        
+        # Return max path sum starting from node (for parent)
+        return node.val + max(left, right)
+    
+    max_sum = float('-inf')
+    dfs(root)
+    return max_sum
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 33: Binary Tree Level Order Traversal (LeetCode 102) - FREQUENCY: 9/10
+-------------------------------------------------------------------------------
+Return level order traversal of binary tree (left to right, level by level).
+
+Example: [3,9,20,null,null,15,7] -> [[3],[9,20],[15,7]]
+"""
+def level_order(root):
+    if not root:
+        return []
+    
+    from collections import deque
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level_size = len(queue)
+        level = []
+        
+        for _ in range(level_size):
+            node = queue.popleft()
+            level.append(node.val)
+            
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        result.append(level)
+    
+    return result
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 34: Serialize and Deserialize Binary Tree (LeetCode 297) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Design algorithm to serialize binary tree to string and deserialize back.
+
+Example: [1,2,3,null,null,4,5] -> serialize -> deserialize -> original tree
+"""
+class Codec:
+    def serialize(self, root):
+        """Encodes a tree to a single string."""
+        def dfs(node):
+            if not node:
+                vals.append('null')
+                return
+            vals.append(str(node.val))
+            dfs(node.left)
+            dfs(node.right)
+        
+        vals = []
+        dfs(root)
+        return ','.join(vals)
+    
+    def deserialize(self, data):
+        """Decodes your encoded data to tree."""
+        def dfs():
+            val = next(vals)
+            if val == 'null':
+                return None
+            node = TreeNode(int(val))
+            node.left = dfs()
+            node.right = dfs()
+            return node
+        
+        vals = iter(data.split(','))
+        return dfs()
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 35: Subtree of Another Tree (LeetCode 572) - FREQUENCY: 7/10
+-------------------------------------------------------------------------------
+Given roots of two binary trees, check if tree subRoot is subtree of root.
+A subtree includes node and all its descendants.
+
+Example: root = [3,4,5,1,2], subRoot = [4,1,2] -> true
+"""
+def is_subtree(root, subRoot):
+    if not subRoot:
+        return True
+    if not root:
+        return False
+    
+    if is_same_tree(root, subRoot):
+        return True
+    
+    return is_subtree(root.left, subRoot) or is_subtree(root.right, subRoot)
+
+def is_same_tree(p, q):
+    if not p and not q:
+        return True
+    if not p or not q:
+        return False
+    if p.val != q.val:
+        return False
+    return is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right)
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 36: Construct Binary Tree from Preorder and Inorder (LC 105) - FREQ: 7/10
+-------------------------------------------------------------------------------
+Given preorder and inorder traversal arrays, construct binary tree.
+
+Example: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7] -> tree [3,9,20,null,null,15,7]
+"""
+def build_tree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    
+    # First element in preorder is root
+    root_val = preorder[0]
+    root = TreeNode(root_val)
+    
+    # Find root in inorder
+    mid = inorder.index(root_val)
+    
+    # Build left and right subtrees
+    root.left = build_tree(preorder[1:mid+1], inorder[:mid])
+    root.right = build_tree(preorder[mid+1:], inorder[mid+1:])
+    
+    return root
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 37: Validate Binary Search Tree (LeetCode 98) - FREQUENCY: 10/10
+-------------------------------------------------------------------------------
+Given root of binary tree, determine if it's valid BST (left < root < right).
+
+Example: [2,1,3] -> true | [5,1,4,null,null,3,6] -> false
+"""
+def is_valid_bst(root):
+    def validate(node, min_val, max_val):
+        if not node:
+            return True
+        
+        if node.val <= min_val or node.val >= max_val:
+            return False
+        
+        return (validate(node.left, min_val, node.val) and 
+                validate(node.right, node.val, max_val))
+    
+    return validate(root, float('-inf'), float('inf'))
+
+# Inorder traversal approach (BST inorder gives sorted list)
+def is_valid_bst_inorder(root):
+    def inorder(node):
+        if not node:
+            return []
+        return inorder(node.left) + [node.val] + inorder(node.right)
+    
+    vals = inorder(root)
+    for i in range(1, len(vals)):
+        if vals[i] <= vals[i-1]:
+            return False
+    return True
+
+"""
+-------------------------------------------------------------------------------
+PROBLEM 38: Kth Smallest Element in BST (LeetCode 230) - FREQUENCY: 8/10
+-------------------------------------------------------------------------------
+Given root of BST and integer k, return kth smallest value (1-indexed).
+
+Example: [3,1,4,null,2], k=1 -> 1 | [5,3,6,2,4,null,null,1], k=3 -> 3
+"""
+def kth_smallest(root, k):
+    stack = []
