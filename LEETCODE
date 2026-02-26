@@ -1,3 +1,202 @@
+# 1. strip() - Remove leading/trailing whitespace
+s = "  hello  "
+print(s.strip())          # "hello"
+
+# 2. split() - String → list (default whitespace)
+s = "hello world python"
+print(s.split())          # ['hello', 'world', 'python']
+print(s.split('o'))       # ['hell', ' w', 'rld pyth', 'n']
+
+# 3. join() - List → string with separator
+words = ['h','e','l','l','o']
+print("".join(words))     # "hello"
+print(" ".join(words))    # "h e l l o"
+
+# 4. lower()/upper() - Case conversion
+s = "Hello World"
+print(s.lower())          # "hello world"
+print(s.upper())          # "HELLO WORLD"
+
+# 5. replace() - Replace substring
+s = "hello world"
+print(s.replace("world", "python"))  # "hello python"
+
+# 6. startswith()/endswith() - Prefix/suffix check
+s = "hello.txt"
+print(s.startswith("hel"))  # True
+print(s.endswith(".txt"))   # True
+
+# 7. find() - First occurrence index (-1 if not found)
+s = "hello world hello"
+print(s.find("hello"))     # 0
+print(s.find("xyz"))       # -1
+
+# 8. count() - Count occurrences
+s = "hello world hello"
+print(s.count("l"))        # 3
+print(s.count("hello"))    # 2
+
+# 9. isalpha()/isdigit()/isalnum() - Character validation
+print("abc123".isalpha())  # False
+print("123".isdigit())     # True
+print("abc123".isalnum())  # True
+
+# 10. s[::-1] - Reverse string (CRITICAL for palindromes)
+s = "hello"
+print(s[::-1])             # "olleh"
+---------------------------------------------------------------------------------DEEPSEEK
+# 11. String Slicing Variations
+s = "python programming"
+print(s[2:8])        # "thon p" - substring from index 2 to 7
+print(s[:5])         # "pytho" - first 5 characters
+print(s[5:])         # " programming" - from index 5 to end
+print(s[-3:])        # "ing" - last 3 characters
+print(s[::2])        # "pto rgam" - every 2nd character
+print(s[::-2])       # "nirmgo" - reverse, every 2nd char
+
+# 12. in/not in - Membership testing
+s = "hello world"
+print("world" in s)      # True
+print("xyz" not in s)    # True
+print("" in s)           # True (empty string always True)
+
+# 13. swapcase() and title()
+s = "hELLO wORLD"
+print(s.swapcase())      # "Hello World"
+s = "hello world python"
+print(s.title())         # "Hello World Python"
+print(s.capitalize())    # "Hello world python"
+
+# 14. rfind() and rindex() - Find from right
+s = "hello world hello"
+print(s.rfind("hello"))   # 12 (last occurrence)
+print(s.find("hello"))    # 0 (first occurrence)
+# rindex() similar but raises ValueError if not found
+
+# 15. partition() and rpartition()
+s = "hello-world-python"
+print(s.partition('-'))   # ('hello', '-', 'world-python')
+print(s.rpartition('-'))  # ('hello-world', '-', 'python')
+
+# 16. splitlines() - Split at line breaks
+s = "hello\nworld\r\npython"
+print(s.splitlines())     # ['hello', 'world', 'python']
+print(s.splitlines(True)) # ['hello\n', 'world\r\n', 'python']
+
+# 17. expandtabs() - Replace tabs with spaces
+s = "a\tb\tc"
+print(s.expandtabs(4))    # "a   b   c"
+print(s.expandtabs(10))   # "a         b         c"
+
+# 18. center(), ljust(), rjust() - String alignment
+s = "hello"
+print(s.center(11, '*'))  # "***hello***"
+print(s.ljust(10, '-'))   # "hello-----"
+print(s.rjust(10, '-'))   # "-----hello"
+
+# 19. zfill() - Pad with zeros
+s = "42"
+print(s.zfill(5))         # "00042"
+print("-42".zfill(5))     # "-0042" (zero after sign)
+
+# 20. strip() variations - lstrip(), rstrip()
+s = "***hello***"
+print(s.lstrip('*'))      # "hello***"
+print(s.rstrip('*'))      # "***hello"
+print(s.strip('*'))       # "hello"
+
+# 21. maketrans() and translate() - Character mapping
+trans = str.maketrans({'h':'H', 'w':'W', 'd':'D'})
+s = "hello world"
+print(s.translate(trans)) # "Hello WorlD"
+
+# 22. isspace(), isupper(), islower()
+print("   ".isspace())    # True
+print("HELLO".isupper())  # True
+print("hello".islower())  # True
+print("Hello".istitle())  # True
+
+# 23. encode() and decode() - String to bytes
+s = "hello"
+b = s.encode('utf-8')
+print(b)                  # b'hello'
+print(b.decode('utf-8'))  # "hello"
+
+# 24. format() - String formatting
+name = "Alice"
+age = 25
+print("{} is {} years old".format(name, age))  # "Alice is 25 years old"
+print("{n} is {a} years old".format(n=name, a=age))  # same
+print(f"{name} is {age} years old")  # f-string (Python 3.6+)
+
+# 25. ord() and chr() - ASCII/Unicode conversion
+print(ord('A'))           # 65
+print(chr(65))            # 'A'
+print(ord('😊'))          # 128522 (Unicode emoji)
+
+# 26. len() - String length
+s = "hello"
+print(len(s))             # 5
+print(len(""))            # 0
+
+# 27. min() and max() - Based on ASCII value
+s = "hello"
+print(min(s))             # 'e'
+print(max(s))             # 'o'
+
+# 28. any() and all() with strings
+s = "abc123"
+print(any(c.isdigit() for c in s))  # True (at least one digit)
+print(all(c.isalnum() for c in s))  # True (all alphanumeric)
+
+# 29. Removing duplicates while preserving order
+s = "hello"
+print("".join(dict.fromkeys(s)))    # "helo"
+
+# 30. Check if string is palindrome (using [::-1])
+s = "racecar"
+print(s == s[::-1])       # True
+
+# 31. Count vowels and consonants
+s = "hello"
+vowels = sum(1 for c in s if c in "aeiou")
+consonants = sum(1 for c in s if c.isalpha() and c not in "aeiou")
+print(f"Vowels: {vowels}, Consonants: {consonants}")  # Vowels: 2, Consonants: 3
+
+# 32. Check anagrams
+s1 = "listen"
+s2 = "silent"
+print(sorted(s1) == sorted(s2))  # True
+
+# 33. Get all substrings
+s = "abc"
+substrings = [s[i:j] for i in range(len(s)) for j in range(i+1, len(s)+1)]
+print(substrings)  # ['a', 'ab', 'abc', 'b', 'bc', 'c']
+
+# 34. Rotate string
+s = "hello"
+k = 2
+print(s[k:] + s[:k])     # "llohe" (left rotate)
+print(s[-k:] + s[:-k])   # "lohel" (right rotate)
+
+# 35. Check if string has unique characters
+s = "hello"
+print(len(set(s)) == len(s))  # False ('l' repeats)
+
+
+# PERFECTED VERSION (your code + 2 extras)
+s = "A man, a plan, a canal: Panama"
+# Real LeetCode palindrome
+clean = ''.join(c.lower() for c in s if c.isalnum())
+print(clean == clean[::-1])  # True
+
+# Extra: zfill for numbers
+print("42".zfill(5))         # "00042"
+
+print("YOUR CODE WINS! 🎉")
+
+
+
 """
 ================================================================================
                 DSA INTERVIEW CRASH COURSE - TOP 50+ LEETCODE PATTERNS
@@ -60,7 +259,17 @@ def contains_duplicate(nums):
 def contains_duplicate_short(nums):
     return len(nums) != len(set(nums))
 
-"""
+"""my code
+def dup(nums):
+    seen={}
+    for i in range(len(nums)):
+        if nums[i] in seen:
+            return True
+        else:
+            seen[nums[i]]=i                   #  seen[i]  used wrong change to num[i] becauuse that number want to put at i position
+    return False                              #  i put last return under seen[nums[i]] i removed  out of if then worked
+
+print(dup([1,2,3,4,4]))
 -------------------------------------------------------------------------------
 PROBLEM 3: Valid Anagram (LeetCode 242) - FREQUENCY: 9/10
 ### LOGIC FOR ANAGRAM- counter() gives out dict with count of elements in it
@@ -75,10 +284,11 @@ otherwise. An anagram is a word formed by rearranging letters of another.
 
 Example: s = "anagram", t = "nagaram" -> true | s = "rat", t = "car" -> false
 """
+from collections import Counter                   #  forget
 from collections import Counter
-
 def is_anagram(s, t):
     return Counter(s) == Counter(t)
+print(is_anagram("listen","silent"))              # " "  forget to make both string
 
 # Without Counter
 def is_anagram_manual(s, t):
@@ -172,7 +382,19 @@ def product_except_self(nums):
     
     return result
 
-"""
+"""MY CODE
+
+def product(nums=[1,2,3,4]):
+    lst=[]
+    prod=1
+    for i in range(len(nums)):
+        prod=prod*nums[i]
+        
+    for i in range (len(nums)):
+        lst.append(prod//nums[i])
+    return lst
+
+print(product())
 -------------------------------------------------------------------------------
 PROBLEM 7: Valid Sudoku (LeetCode 36) - FREQUENCY: 7/10
 -------------------------------------------------------------------------------
@@ -297,7 +519,20 @@ def is_palindrome(s):
     
     return True
 
-"""
+"""MY CODE
+
+def palindrome(w):
+    clean = ''.join(c for c in w.lower() if c.isalnum())         #       ''.join(      c for c in     w.lower()        if c.isalnum())
+    word=""
+    for i in range(len(clean)-1, -1, -1):  # FIXED: Proper reverse
+        word=word+clean[i]
+
+    if word==clean:
+        print("palindrome")
+    else:
+        print("not pal")
+
+palindrome("A man, a plan, a canal: Panama")
 -------------------------------------------------------------------------------
 PROBLEM 11: Two Sum II - Input Array Sorted (LeetCode 167) - FREQUENCY: 8/10
 -------------------------------------------------------------------------------
