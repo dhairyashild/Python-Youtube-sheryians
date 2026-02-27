@@ -26,6 +26,7 @@ print(s.upper())          # "HELLO WORLD"
 # 5. replace() - Replace substring
 s = "hello world"
 print(s.replace("world", "python"))  # "hello python"
+print("hello world".replace("world", "python"))  # "hello python"                # AT START MUST GIVE STRING " " -FORGET
 
 # 6. startswith()/endswith() - Prefix/suffix check
 s = "hello.txt"
@@ -38,9 +39,11 @@ print(s.find("hello"))     # 0
 print(s.find("xyz"))       # -1
 
 # 8. count() - Count occurrences
-s = "hello world hello"
-print(s.count("l"))        # 3
-print(s.count("hello"))    # 2
+s = "hello world hello" 
+print(s.count("l"))           /     "hello world hello".count("l")              # 5 ✓ (2+1+2 L's)
+"hello world hello".count("hello") # 2 ✓ [two full "hello" substrings]
+"mississippi".count("s")           # 4 ✓ [four 's' chars]
+
 
 # 9. isalpha()/isdigit()/isalnum() - Character validation
 print("abc123".isalpha())  # False
@@ -765,19 +768,36 @@ input string is valid (open brackets closed in correct order).
 
 Example: "()[]{}" -> true | "([)]" -> false
 """
-def is_valid_parentheses(s):
-    stack = []
-    mapping = {")": "(", "}": "{", "]": "["}
-    
-    for char in s:
-        if char in mapping:
-            top = stack.pop() if stack else '#'
-            if mapping[char] != top:
-                return False
-        else:
-            stack.append(char)
-    
-    return not stack
+-------Stack------
+
+class Solution(object):
+    def isValid(self, s):
+        stack = []
+        
+        for c in s:
+            # Open brackets → Push
+            if c == "(" or c == "[" or c == "{":
+                stack.append(c)
+            
+            # Close brackets → Match + Pop
+            elif c == ")":
+                if stack and stack[-1] == "(":
+                    stack.pop()
+                else:
+                    return False
+            elif c == "]":
+                if stack and stack[-1] == "[":
+                    stack.pop()
+                else:
+                    return False
+            elif c == "}":
+                if stack and stack[-1] == "{":
+                    stack.pop()
+                else:
+                    return False
+        
+        return len(stack) == 0
+-----------
 
 """
 -------------------------------------------------------------------------------
