@@ -1,4 +1,4 @@
-# 1. strip() - Remove leading/trailing whitespace
+# 1. strip() - Remove 1st/last space
 s = "  hello  "
 print(s.strip())          # "hello"
 
@@ -6,6 +6,12 @@ print(s.strip())          # "hello"
 s = "hello world python"
 print(s.split())          # ['hello', 'world', 'python']
 print(s.split('o'))       # ['hell', ' w', 'rld pyth', 'n']
+print("hello world".split())     # ['hello', 'world']
+print("apple,banana,cherry".split(','))  # ['apple', 'banana', 'cherry']
+print("one--two--three".split('--'))     # ['one', 'two', 'three']
+print("a b c d e".split(' ', 2))  # ['a', 'b', 'c d e']
+# 4. NO SPACES = ONE ITEM (your bug!)
+print("abbbc".split())         # ['abbbc'] ❌
 
 # 3. join() - List → string with separator
 words = ['h','e','l','l','o']
