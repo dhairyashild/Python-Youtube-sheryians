@@ -507,24 +507,58 @@ with open("superman.txt", "a") as file:
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------        OOPS - PYHTON        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        --  My CLASS CODE NEUROVED REMEMBER DEF AFTER CODE LINE AS IT IS   --   
+
+class Car:        #  1. Class: Template(blueprint) to create objects.      1st word capital + Never use _ in its name    == eg= class Dog:
+    species= "german sheferd"        #  CLASS VARIABLE  = SHARED BY ALL OBJECTS OF CLASS 
+    def __init__(self, color="blue" ,age=0):       # 4. 'def __init__': CONSTRUCTOR is function called automatically when created new object.
+        self.color = color           # INSTANCE VARIABLE = UNIQUE TO EACH CLASS (OPPOSITE TO CLASS VAR)  -- GIVE SAME NAME MOSLY BUT U CAN GIVE self.color= paint (on RHS  anything will be ok )
+        self.age = age           # INSTANCE VAR
+      
+            
+#  METHODs can get above constructor vars = SO must use self.name + self.age to get constructor var into next method/function
+    def info(self,country):         ############# this  country is METHID VAR called without using self
+        return f"{self.color} is {self.age} years old and {country}"  
+
+# YOUR ORIGINAL EXAMPLE
+c1 = Car("red",25)     # 2. Object: INSTANCE of a class that occupies memory.--Relationship: If a "Car" is the Class (the design), a "Red Tesla" is the Object (the physical thing).
+print(c1.color)        # red          -- PRINT INSTANCE VAR VALUE
+print(c1.info("india")) # red is 25 years old and india
+
+# DEFAULT EXAMPLE
+print("\n=== DEFAULT VALUES ===")
+c2 = Car()             # NO args → DEFAULTS
+print(c2.color)        # blue
+print(c2.info("usa"))
+
+# OVERRIDE EXAMPLE
+print("\n=== OVERRIDE DEFAULT ===")
+c3 = Car("black", 10)  # OVERRIDE defaults
+print(c3.color)        # black
+
+# CLASS VARIABLE EXAMPLE
+print("\n=== CLASS VARIABLE SHARED ===")
+print(c1.species)      # german sheferd
+print(c2.species)      # german sheferd
+print(c3.species)      # german sheferd - SAME for ALL!
 
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-OOPS
+# 1. Class type
+print(type(MyClass))         # <class 'type'>
+# 2. Object type  
+obj = MyClass()
+print(type(obj))             # <class '__main__.MyClass'>
+
+# 3. IN-Built CLASS type LIKE INT, FLOAT ....
+a = 3.2
+print(type(a))               # <class 'float'>      
 
 
-
-1. Class: Template(blueprint) to create objects.
-        1st word capital + Never use _ in its name    == eg= class Dog:
-2. Object: instance of a class that occupies memory.
-Relationship: If a "Car" is the Class (the design), a "Red Tesla" is the Object (the physical thing).
-3. 'class' keyword: Used to define the blueprint for your data structure.
-4. 'def __init__': CONSTRUCTOR that initializes an object's starting values.
 5. 'self' keyword: Represents the specific instance currently being used in code.
 6. Industry Best Practice: Always use 'PascalCase' for naming your Python classes.
 7. Real-time Use: Classes group data and logic to make code reusable.
-
-Next step: Would you like me to explain 'Inheritance' using this same simple format?
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
