@@ -561,7 +561,58 @@ print(type(a))               # <class 'float'>
 7. Real-time Use: Classes group data and logic to make code reusable.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Lecture 15: Python OOP - Classes, Encapsulation & Inheritance | Complete Tutorial in Hindi 🐍
 
+
+class Test:
+    def __init__(self):
+        self.pub = "public"      # Public
+        self._pro = "protected"  # Protected  
+        self.__pri = "private"   # Private
+    
+    def pub_method(self): print("public method")
+    def _pro_method(self): print("protected method")
+    def __pri_method(self): print("private method")
+    
+    def show_all(self):  # Inside class - CAN access everything
+        print(self.pub, self._pro, self.__pri)
+        self.pub_method()
+        self._pro_method()
+        self.__pri_method()
+
+class Sub(Test):
+    def show(self):  # Subclass - CAN access public & protected
+        print(self.pub, self._pro)  # ✅ ✅
+        # print(self.__pri)  # ❌ ERROR!
+        self.pub_method()   # ✅
+        self._pro_method()  # ✅
+        # self.__pri_method()  # ❌ ERROR!
+
+# CREATING OBJECTS
+t = Test()
+s = Sub()
+
+print("=== INSIDE CLASS ===")
+t.show_all()  # ✅ Everything works
+
+print("\n=== OUTSIDE CLASS ===")
+print(t.pub)          # ✅ public
+print(t._pro)         # ⚠️ protected (works but don't)
+# print(t.__pri)      # ❌ private - ERROR!
+
+t.pub_method()        # ✅ public
+t._pro_method()       # ⚠️ protected (works but don't)
+# t.__pri_method()    # ❌ private - ERROR!
+
+print("\n=== SUBCLASS ===")
+s.show()  # ✅ public & protected only
+
+
+           | pub | _pro | __pri
+-----------|-----|------|------
+Inside     | ✅  | ✅   | ✅
+Outside    | ✅  | ⚠️  | ❌
+Subclass   | ✅  | ✅   | ❌
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
