@@ -61,14 +61,18 @@ elif condition2:                         elif temp >=0 and temp <=10:   --ERROR-
 else:
         # RUN  Code if all conditions are False
 
-in_maintenance = False
-x = 15
-y = 2
-z = 10
-# Evaluation order: 1. not, 2. and, 3. or
-if not in_maintenance and (x > 10 and y < 5) or z == 0:
-    print("Group works")
+#REMEMBER ONLY THIS FOR if not----- if not var=null: run below code  else: run code after else
+######### if not var=zero/null list,set/False :  then code run   else var has value: then else code run 
+value = 30  # True (non-zero)
+if not value:  # not 30 →  means if after not value= null then only below code run 
+    print("Value is falsy")  # Won't run
+else:
+    print("Value is truthy")  # Runs: True
 
+
+value = 0  # Falsy value = False prints but false not print as boolean works for capital F in False
+if not value:  # not 0 → True (runs block)
+    print("Value is falsy")  # Runs this as line as if not 0 means null/False
 
 
 LOGICAL OPERATOR==
