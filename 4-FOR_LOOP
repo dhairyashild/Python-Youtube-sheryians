@@ -119,4 +119,45 @@ for num in nums:
     if num > 4:
         print(f"Found: {num}")  # Found: 5
         break
+-------------------------------------
+----------------------GPT MY SHANKA SOLVED= HOW FOR LOOP CALLS VARS ?
+
+
+# for c in s: → s must be iterable (1-by-1 elements)
+
+s = "hello"     # String → h,e,l,l,o ✓
+s = [1,2,3]     # List → 1,2,3 ✓
+s = (4,5)       # Tuple → 4,5 ✓
+
+# Fails:
+# s = 123        # int ❌
+# s = 3.14       # float ❌
+
+for c in "DSA":  # D → S → A (one char per loop)
+    print(c)
+
+
+
+
+
+# Dict Loop Examples (AI Engineer Notes)
+
+# 1. Key+Value pairs (.items())
+model_scores = {'gpt': 0.95, 'llama': 0.87, 'bert': 0.92}
+for name, score in model_scores.items():
+    print(f"{name}: {score}")  
+# Output: gpt: 0.95 → llama: 0.87 → bert: 0.92
+
+# 2. Values only (.values())
+for score in model_scores.values():
+    print(score)  
+# Output: 0.95 → 0.87 → 0.92
+
+# 3. Keys only (bare dict)
+for name in model_scores:
+    print(name)  
+# Output: gpt → llama → bert
+
+
+
 
