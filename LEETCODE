@@ -1,8 +1,10 @@
 # 1. strip() - Remove 1st/last space
+
 s = "  hello  "
 print(s.strip())          # "hello"
 
-# 2. split() - String → list (default whitespace)
+# 2. split( "WHAT U GAVE HERE REMOVED FROM STRING AND COMMA CAME THERE ) - 1 String → list
+
 s = "hello world python"
 print(s.split())          # ['hello', 'world', 'python']
 print(s.split('o'))       # ['hell', ' w', 'rld pyth', 'n']
@@ -20,13 +22,14 @@ print(" ".join(words))    # "h e l l o"
 
 # 4. lower()/upper() - Case conversion
 s = "Hello World"
-print(s.lower())          # "hello world"
+print(s.lower()) =   "Hello World".lower()         # "hello world"       --BOTH WORKS SAME
 print(s.upper())          # "HELLO WORLD"
 
 # 5. replace() - Replace substring
 s = "hello world"
+print(s.replace("OLD", "NEW"))
 print(s.replace("world", "python"))  # "hello python"
-print("hello world".replace("world", "python"))  # "hello python"                # AT START MUST GIVE STRING " " -FORGET
+print("hello world".replace("world", "python"))  # "hello python"   # AT START MUST GIVE STRING " " -FORGET
 
 # 6. startswith()/endswith() - Prefix/suffix check
 s = "hello.txt"
@@ -35,20 +38,27 @@ print(s.endswith(".txt"))   # True
 
 # 7. find() - First occurrence index (-1 if not found)
 s = "hello world hello"
-print(s.find("hello"))     # 0
-print(s.find("xyz"))       # -1
+print(s.find("hello"))     # 0 INDEX NUMBER AS O/P
+print(s.find("xyz"))       # -1 IF NOT PRESENT
 
-# 8. count() - Count occurrences
+# 8. count(" SUBSTRING / LETTER WANT TO CUNT FIND IN string/list only) - Count occurrences
 s = "hello world hello" 
-print(s.count("l"))           /     "hello world hello".count("l")              # 5 ✓ (2+1+2 L's)
+print(s.count("l"))     /     "hello world hello".count("l")              # 5 ✓ (2+1+2 L's)
 "hello world hello".count("hello") # 2 ✓ [two full "hello" substrings]
-"mississippi".count("s")           # 4 ✓ [four 's' chars]
+# List .count()
+tokens = ["AI", "ML", "AI", "NLP"]
+print(tokens.count("AI"))  # 2 - count token frequency
+# Set - No .count(), use in SET , BELOW U CAN HAVE BUT NOT COUNT IN SET
+unique_tags = {"AI", "ML", "NLP"}
+print("AI" in unique_tags)  # True - O(1) membership test
+print(len(unique_tags))     # 3 - total unique count
 
 
 # 9. isalpha()/isdigit()/isalnum() - Character validation
-print("abc123".isalpha())  # False
-print("123".isdigit())     # True
-print("abc123".isalnum())  # True
+print("abc123".isalpha())  # False  =ALL chars are letters only (a-z, A-Z)
+print("123".isdigit())     # True =digits only (0-9
+print("abc123".isalnum())  # True = letters OR digits (no spaces/symbols)
+"abc 123".isalnum() → False (space)
 
 # 10. s[::-1] - Reverse string (CRITICAL for palindromes)
 s = "hello"
