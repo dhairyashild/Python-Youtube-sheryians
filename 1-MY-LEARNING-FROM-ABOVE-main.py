@@ -1,6 +1,9 @@
 comments == """multiline """"        /      #
 
 FUNCTION = JECHYA NANTAR () eto tyala function mhanatat eg- print() , range(), input()
+Exiting Early (Guard Clauses): Stopping a function if data is invalid.
+Returning Boolean (Flags): Checking if a condition (like "is model trained") is met.
+Returning Results: Passing processed data or predictions back to the main program.
 
 print(a[DEFAULTZERO:DEFAULTLAST:DEFAULT1])
 
@@ -318,7 +321,6 @@ def check_age(age):
     if age < 18:
         return "Access Denied"
     return "Access Granted"
-
 status = check_age(15)
 print(status)
 
@@ -327,10 +329,8 @@ def get_user_data():
     name = "Alice"
     level = 10
     return name, level # Provider: Throws values out in order
-
 # LHS catches <--- RHS provides
 user_name, user_level = get_user_data() # LHS = vars to store; RHS = call function
-
 print(f"User: {user_name}, Level: {user_level}")
 
 # 4. To stop execution (returning None)
@@ -338,7 +338,6 @@ def simple_exit(condition):
     if condition:
         return # Returns None and stops here
     print("This only prints if condition is False")
-
 simple_exit(True)
 -----------------------------------------------------
 KEYWORD ARGUMENT = given in argument with key=value
@@ -364,8 +363,22 @@ def greet(name, age=32):
 
 greet("Alice")        ==========Alice is 32 years old!
 greet("Bob", 25)      =========Bob is 25 years old!
+--------------------------------------------------------------------------------------
+# Use Case OF RETURN  1: The 'Unreachable' code
+def model_status():
+    return "Offline"
+    print("This will NOT run.") # The function already closed
 
+# Use Case 2: Returning True/False (Validation)
+def is_data_clean(data):
+    if len(data) == 0:
+        return False # Exit early if empty
+    return True      # Continue if data exists
 
+# Use Case 3: Returning a Result
+def get_prediction(x):
+    prediction = x * 0.5
+    return prediction # Sends 0.5 back to the user
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LIST===
