@@ -1,3 +1,74 @@
+# 1. VALID PARENTHESES - FIXED (2 bugs: == + final check)
+class solution:
+    def isvalid(self,s):
+        stack=[]
+        for c in s:
+            if c in "([{":
+                stack.append(c)
+            elif c==")":
+                if stack and stack[-1]=="(":  # == not =
+                    stack.pop()
+                else: return False
+            elif c=="}":
+                if stack and stack[-1]=="{":
+                    stack.pop()
+                else: return False
+            elif c=="]":
+                if stack and stack[-1]=="[":
+                    stack.pop()
+                else: return False
+        return len(stack)==0  # ADD: empty stack = valid!
+
+# 2. DAILY TEMPS - CORRECT (Reverse monotonic stack)
+def tempe(temp):
+    ans=len(temp)*[0]  # 0=no warmer
+    stack=[]
+    for i in range(len(temp)-1,-1,-1):
+        while stack and temp[i]>=temp[stack[-1]]:
+            stack.pop()
+        if stack: 
+            ans[i]=stack[-1]-i  # Days to warmer
+        stack.append(i)
+    return ans
+
+# 3. NEXT SMALLER - CORRECT (1 line change from greater)  
+def nextSmallerElement(arr):     
+    ans = [-1] * len(arr)
+    stack = []
+    for i in range(len(arr)-1, -1, -1):
+        while stack and arr[i] <= stack[-1]:  # >= → <= MAGIC!
+            stack.pop()
+        if stack: 
+            ans[i] = stack[-1]
+        stack.append(arr[i])
+    return ans
+
+
+
+
+class MinStack:
+    def init(self):
+        self.stack = []
+        self.min_stack = []  # Keep track of min at each state
+    
+    def push(self, val):
+        self.stack.append(val)
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+        else:
+            self.min_stack.append(self.min_stack[-1])
+    
+    def pop(self):
+        self.stack.pop()
+        self.min_stack.pop()
+    
+    def top(self):
+        return self.stack[-1]
+    
+    def getMin(self):
+        return self.min_stack[-1]
+
+
 # 1. strip() - Remove 1st/last space
 
 s = "  hello  "
