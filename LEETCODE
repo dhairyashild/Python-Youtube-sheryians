@@ -882,18 +882,21 @@ days you have to wait after i-th day to get warmer temperature.
 
 Example: temperatures = [73,74,75,71,69,72,76,73] -> [1,1,4,2,1,1,0,0]
 """
-def daily_temperatures(temperatures):
-    n = len(temperatures)
-    result = [0] * n
-    stack = []  # store indices
-    
-    for i in range(n):
-        while stack and temperatures[i] > temperatures[stack[-1]]:
-            idx = stack.pop()
-            result[idx] = i - idx
-        stack.append(i)
-    
-    return result
+# RIGHT→LEFT Daily Temperatures - CLEAN CODE (No Values)
+
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        ans = [0] * len(temperatures)
+        stack = []
+        
+        for i in range(len(temperatures)-1, -1, -1):
+            while stack and temperatures[i] >= temperatures[stack[-1]]:
+                stack.pop()
+            if stack:
+                ans[i] = stack[-1] - i
+            stack.append(i)
+        
+        return ans
 
 
 # =================================================================================
