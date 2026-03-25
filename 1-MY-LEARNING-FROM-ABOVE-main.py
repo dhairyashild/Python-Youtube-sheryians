@@ -239,66 +239,36 @@ def twoSum(nums, target=9):
 print(twoSum([13,4,3,8,3,5]))
 
 ===============================  PYTHON AND CODES FROM GPT MUST KNOW FOR DSA        ========================================
-# --- LIST OPERATIONS ---
-my_list = [1, 2, 3]                                      # Create: Initialize with brackets
-my_list.append(4)                                        # Add: Insert element at the end
-my_list.insert(0, 0)                                     # Add: Insert at specific index (index, value)
-my_list.extend([5, 6])                                   # Add: Concatenate another iterable
-my_list[1] = 9                                           # Replace: Update value at specific index
-val = my_list.pop()                                      # Remove: Delete and return last element
-my_list.pop(0)                                           # Remove: Delete and return element at index
-my_list.remove(9)                                        # Remove: Delete first occurrence of a value
-del my_list[0:2]                                         # Remove: Delete a slice of elements
-item_count = len(my_list)                                # Count: Get total number of elements
-occurrences = my_list.count(5)                           # Count: Number of times a value appears
-my_list.sort()                                           # Utility: Sort list in-place (O(n log n))
-my_list.reverse()                                        # Utility: Reverse list in-place
-exists = 5 in my_list                                    # Search: Boolean check for membership
-nums.index(need)                                         # Get index number
+# --- ESSENTIAL LIST OPERATIONS (O-Notation included for DSA) ---
+my_list = [1, 2, 3]          # Create: Initialize [1, 2, 3]
+my_list.append(4)            # Add End: [1, 2, 3, 4] | O(1)
+my_list.insert(0, 0)         # Add at Index: [0, 1, 2, 3, 4] | O(n)
+my_list.extend([5, 6])       # Add Iterable: [0, 1, 2, 3, 4, 5, 6] | O(k)
+my_list[1] = 9               # Replace: [0, 9, 2, 3, 4, 5, 6] | O(1)
+val = my_list.pop()          # Remove End: val=6, list=[0, 9, 2, 3, 4, 5] | O(1)
+my_list.pop(0)               # Remove Index: returns 0, list=[9, 2, 3, 4, 5] | O(n)
+my_list.remove(9)            # Remove Value: [2, 3, 4, 5] | O(n)
+del my_list[0:2]             # Delete Slice: [4, 5] | O(n)
+item_count = len(my_list)    # Length: 2 | O(1)
+occurrences = my_list.count(5)# Count Value: 1 | O(n)
+idx = my_list.index(5)       # Find Index: 1 (returns first match) | O(n)
+my_list.sort()               # Sort In-place: [4, 5] | O(n log n)
+my_list.reverse()            # Reverse In-place: [5, 4] | O(n)
+exists = 5 in my_list        # Membership: True | O(n)
 
-# --- DICTIONARY OPERATIONS ---
-my_dict = {"a": 1, "b": 2}                               # Create: Initialize with curly braces
-my_dict["c"] = 3                                         # Add/Replace: Assign value to a key
-my_dict.update({"d": 4, "e": 5})                         # Add/Replace: Merge another dictionary
-val = my_dict.get("a", 0)                                # Access: Get value with optional default
-del my_dict["b"]                                         # Remove: Delete key-value pair
-removed_val = my_dict.pop("c")                           # Remove: Delete key and return its value
-key_exists = "a" in my_dict                              # Search: Check if key exists in dict
-all_keys = my_dict.keys()                                # View: Get all keys
-all_values = my_dict.values()                            # View: Get all values
-all_items = my_dict.items()                              # View: Get all key-value tuples
-dict_size = len(my_dict)                                 # Count: Get number of pairs
-my_dict.clear()                                          # Utility: Remove all items
-
-# --- LIST OPERATIONS ---
-my_list = [1, 2, 3]                                      # [1, 2, 3]
-my_list.append(4)                                        # [1, 2, 3, 4]
-my_list.insert(0, 0)                                     # [0, 1, 2, 3, 4]
-my_list.extend([5, 6])                                   # [0, 1, 2, 3, 4, 5, 6]
-my_list[1] = 9                                           # [0, 9, 2, 3, 4, 5, 6]
-val = my_list.pop()                                      # val = 6, my_list = [0, 9, 2, 3, 4, 5]
-my_list.pop(0)                                           # returns 0, my_list = [9, 2, 3, 4, 5]
-my_list.remove(9)                                        # [2, 3, 4, 5]
-del my_list[0:2]                                         # [4, 5]
-item_count = len(my_list)                                # 2
-occurrences = my_list.count(5)                           # 1
-my_list.sort()                                           # [4, 5] (already sorted here)
-my_list.reverse()                                        # [5, 4]
-exists = 5 in my_list                                    # True
-
-# --- DICTIONARY OPERATIONS ---
-my_dict = {"a": 1, "b": 2}                               # {'a': 1, 'b': 2}
-my_dict["c"] = 3                                         # {'a': 1, 'b': 2, 'c': 3}
-my_dict.update({"d": 4, "e": 5})                         # {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
-val = my_dict.get("a", 0)                                # 1
-del my_dict["b"]                                         # {'a': 1, 'c': 3, 'd': 4, 'e': 5}
-removed_val = my_dict.pop("c")                           # removed_val = 3, my_dict = {'a': 1, 'd': 4, 'e': 5}
-key_exists = "a" in my_dict                              # True
-all_keys = my_dict.keys()                                # dict_keys(['a', 'd', 'e'])
-all_values = my_dict.values()                            # dict_values([1, 4, 5])
-all_items = my_dict.items()                              # dict_items([('a', 1), ('d', 4), ('e', 5)])
-dict_size = len(my_dict)                                 # 3
-my_dict.clear()                                          # {}
+# --- ESSENTIAL DICTIONARY OPERATIONS (Fast Lookups) ---
+my_dict = {"a": 1, "b": 2}   # Create: {'a': 1, 'b': 2}
+my_dict["c"] = 3             # Add/Update: {'a': 1, 'b': 2, 'c': 3} | O(1)
+my_dict.update({"d": 4})     # Merge: {'a': 1, 'b': 2, 'c': 3, 'd': 4} | O(k)
+val = my_dict.get("z", 0)    # Safe Access: 0 (returns default if key missing) | O(1)
+del my_dict["b"]             # Delete: {'a': 1, 'c': 3, 'd': 4} | O(1)
+removed = my_dict.pop("c")   # Pop Key: removed=3, dict={'a': 1, 'd': 4} | O(1)
+exists = "a" in my_dict      # Search Key: True | O(1)
+all_keys = my_dict.keys()    # View Keys: dict_keys(['a', 'd'])
+all_vals = my_dict.values()  # View Values: dict_values([1, 4])
+all_items = my_dict.items()  # View Pairs: dict_items([('a', 1), ('d', 4)])
+dict_size = len(my_dict)     # Count: 2 | O(1)
+my_dict.clear()              # Empty: {} | O(1)                                         # {}
 =========================================================================
 # LC 20: Valid Parentheses (while stack)
 def isValid(s):
