@@ -39,7 +39,7 @@ dict(a=1,b=2)  # kwargs → dict
 ---------------------------------
 a=1
 print(bool(a))        == True  - only if a   has any value given
-a=0                    /False/0/0.0/" "/[]/ {} /()         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE
+a=0                    /False/0/0.0/" "/[]/ {} /()/None         ==ALL THESE VALUES GIVE FALSE AND ANY NUMBER GIVES TRUE    - none/false shows error=NameError: name 'none' is not defined.
 print(bool(a))        == False
 
 # OPERATOR
@@ -65,7 +65,7 @@ else:
         # RUN  Code if all conditions are False
 
 #REMEMBER ONLY THIS FOR if not----- if not var=null: run below code  else: run code after else
-######### if not var=zero/null list,set/False :  then code run   else var has value: then else code run 
+######### if not var=zero/null in list/set/False :  then code run   else var has value: then else code run 
 value = 30  # True (non-zero)
 if not value:  # not 30 →  means if after not value= null then only below code run 
     print("Value is falsy")  # Won't run
@@ -88,18 +88,18 @@ OR  ==== ANY 1 MUST TRUE
 # LOOPS
 FOR LOOP NOTES BELOW 4 LINES SARANSH - 
 
-range(start      ,stop+1/stop-1 IF NEGATIVE,     step 1/-1 IF REVERSE)      =   range(stop)    ---- because start=1 & step=+1 is default ,u need just stop+1 value to give lke below
-range(0   ,50+1/(-50-1)  ,   1/-1 IF REVESRSE)                            =   range(51) ALSO GIVES SAME RESULT        
-- if reverse in minus number then also stop-1 so increase by -1    ----BUT STRING WORD NO NEED +1 AS IT START FORM 0 
+range(start      ,stop+1,     step 1/-1 IF REVERSE)      =   range(stop)    ---- because start=1 & step=+1 is default ,u need just stop+1 value to give lke below
+range(0   ,50+1  ,   1/-1 IF REVESRSE)                            =   range(51) ALSO GIVES SAME RESULT        
 -- so above case       range(len(a))    =   a       --- both can be used in for loop
 --w="abcd"
 from above we get that    w= w0=a  +  w1=b  + w2=c   + w3=d
 ------------------------------------------------------------------------------
-1)#FOR LOOP WITH NUMBERS
-# PRINT -1 TO -10
-for i in range(-11,-1,-1):        ----- ERROR FORGET :     - GIVE MIDDLE NUMBER WITH+1  # U  can use any word instead of i        
+1)#FOR LOOP WITH NUMBERS    - ERROR FORGET : AT END
+# FOR NEGATIVE NUMS REMMEBER BELOW 2 CODES ONLY
+for i in range(-11,-1,1):    = -11 ,-10...-2     - GIVE MIDDLE NUMBER WITH -1         # U  can use any word instead of i       
   print(i)                         ---- ONLY LAST NUMBER ALSO WORKS LIKE range(21)    # need indentation space for 2nd line  
-
+for i in range(-1,-11,-1):   = -1,-2... -10     ----    - GIVE MIDDLE NUMBER WITH +1      
+  print(i) 
 
 PROGRAMME-1    PRINT TABLEOF 5                       table of any number ==take n as i/p
 for i in range(5,51,5)                       for i in range(n,(n*10)+1,n)
@@ -146,10 +146,18 @@ print(reverse)
 data = [10, 20, 30, 40, 50]
 
 # 1) BASIC - Each item
-for x in data: print(x)                    # 10 20 30 40 50
+for x in data: print(x)                    # 10 20 30 40 50     --THIS ALSO WORKS print IN SAME LINE OF for 
 
 # 2) INDEX - enumerate()
-for i,x in enumerate(data): print(i,x, end=" ")     # 0:10 1:20 2:30...
+for i ,j in enumerate(data):
+    print(i,j)    ---------->
+0 10
+1 20
+2 30
+3 40
+4 50
+
+for i,x in enumerate(data): print(i,x, end=" ")  ------->  0 10 1 20 2 30 3 40 4 50
 
 # 3) MODIFY - Change items  
 for i in range(len(data)): data[i] *= 2    # [20,40,60,80,100]
@@ -230,8 +238,68 @@ def twoSum(nums, target=9):
         
 print(twoSum([13,4,3,8,3,5]))
 
+===============================  PYTHON AND CODES FROM GPT MUST KNOW FOR DSA        ========================================
+# --- LIST OPERATIONS ---
+my_list = [1, 2, 3]                                      # Create: Initialize with brackets
+my_list.append(4)                                        # Add: Insert element at the end
+my_list.insert(0, 0)                                     # Add: Insert at specific index (index, value)
+my_list.extend([5, 6])                                   # Add: Concatenate another iterable
+my_list[1] = 9                                           # Replace: Update value at specific index
+val = my_list.pop()                                      # Remove: Delete and return last element
+my_list.pop(0)                                           # Remove: Delete and return element at index
+my_list.remove(9)                                        # Remove: Delete first occurrence of a value
+del my_list[0:2]                                         # Remove: Delete a slice of elements
+item_count = len(my_list)                                # Count: Get total number of elements
+occurrences = my_list.count(5)                           # Count: Number of times a value appears
+my_list.sort()                                           # Utility: Sort list in-place (O(n log n))
+my_list.reverse()                                        # Utility: Reverse list in-place
+exists = 5 in my_list                                    # Search: Boolean check for membership
+nums.index(need)                                         # Get index number
 
+# --- DICTIONARY OPERATIONS ---
+my_dict = {"a": 1, "b": 2}                               # Create: Initialize with curly braces
+my_dict["c"] = 3                                         # Add/Replace: Assign value to a key
+my_dict.update({"d": 4, "e": 5})                         # Add/Replace: Merge another dictionary
+val = my_dict.get("a", 0)                                # Access: Get value with optional default
+del my_dict["b"]                                         # Remove: Delete key-value pair
+removed_val = my_dict.pop("c")                           # Remove: Delete key and return its value
+key_exists = "a" in my_dict                              # Search: Check if key exists in dict
+all_keys = my_dict.keys()                                # View: Get all keys
+all_values = my_dict.values()                            # View: Get all values
+all_items = my_dict.items()                              # View: Get all key-value tuples
+dict_size = len(my_dict)                                 # Count: Get number of pairs
+my_dict.clear()                                          # Utility: Remove all items
 
+# --- LIST OPERATIONS ---
+my_list = [1, 2, 3]                                      # [1, 2, 3]
+my_list.append(4)                                        # [1, 2, 3, 4]
+my_list.insert(0, 0)                                     # [0, 1, 2, 3, 4]
+my_list.extend([5, 6])                                   # [0, 1, 2, 3, 4, 5, 6]
+my_list[1] = 9                                           # [0, 9, 2, 3, 4, 5, 6]
+val = my_list.pop()                                      # val = 6, my_list = [0, 9, 2, 3, 4, 5]
+my_list.pop(0)                                           # returns 0, my_list = [9, 2, 3, 4, 5]
+my_list.remove(9)                                        # [2, 3, 4, 5]
+del my_list[0:2]                                         # [4, 5]
+item_count = len(my_list)                                # 2
+occurrences = my_list.count(5)                           # 1
+my_list.sort()                                           # [4, 5] (already sorted here)
+my_list.reverse()                                        # [5, 4]
+exists = 5 in my_list                                    # True
+
+# --- DICTIONARY OPERATIONS ---
+my_dict = {"a": 1, "b": 2}                               # {'a': 1, 'b': 2}
+my_dict["c"] = 3                                         # {'a': 1, 'b': 2, 'c': 3}
+my_dict.update({"d": 4, "e": 5})                         # {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+val = my_dict.get("a", 0)                                # 1
+del my_dict["b"]                                         # {'a': 1, 'c': 3, 'd': 4, 'e': 5}
+removed_val = my_dict.pop("c")                           # removed_val = 3, my_dict = {'a': 1, 'd': 4, 'e': 5}
+key_exists = "a" in my_dict                              # True
+all_keys = my_dict.keys()                                # dict_keys(['a', 'd', 'e'])
+all_values = my_dict.values()                            # dict_values([1, 4, 5])
+all_items = my_dict.items()                              # dict_items([('a', 1), ('d', 4), ('e', 5)])
+dict_size = len(my_dict)                                 # 3
+my_dict.clear()                                          # {}
+=========================================================================
 # LC 20: Valid Parentheses (while stack)
 def isValid(s):
     stack=[]
