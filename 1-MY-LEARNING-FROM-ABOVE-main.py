@@ -577,10 +577,22 @@ class Car:        #  1. Class: Template(blueprint) to create objects.      1st w
     def info(self,country):         ############# this  country is METHID VAR called without using self
         return f"{self.color} is {self.age} years old and {country}"  
 
+        # call another method of SAME object
+        self.show_info()
+            
+-----  THIS 5 LINES ADDED LATER TO CHECK METHOD VAR INTERCHANGEBLE IN ALL METHOD OF OBJECT - MAY HAVE DIFFERENT VARS FROM ABOVE SO NOT CONFUSE ----
+    def show_info(self):
+        # can use both self.color and self.country here
+        print(f"{self.color} car from {self.country}")
+c1 = Car("red",25)
+c1.set_country("India")   # this will internally call show_info()
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 # YOUR ORIGINAL EXAMPLE
 c1 = Car("red",25)     # 2. Object: INSTANCE of a class that occupies memory.--Relationship: If a "Car" is the Class (the design), a "Red Tesla" is the Object (the physical thing).
 print(c1.color)        # red          -- PRINT INSTANCE VAR VALUE
-print(c1.info("india")) # red is 25 years old and india
+print(c1.info("india")) # red is 25 years old and india            
+# print(Car("red",25).info("india")) works same as above, it will create a new Car object and immediately call info("india") on it.
 
 # DEFAULT EXAMPLE
 print("\n=== DEFAULT VALUES ===")
