@@ -683,8 +683,76 @@ Subclass   | ✅  | ✅   | ❌
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+OOPS NOTES------
+
+-- Types of Attribute
+1=Class attribute = variable created inside  class
+2=Instance attribute = created using an instance like self.name, self.age
+# class Animal:
+#     name = "lion"                    #class attribute
+#     def __init__(self,age):
+#         self.age = age               #instance attribute
 
 
+Types of Methods--
+1=instance method =Works with object of the class.
+2= classmethod=works with the class itself it will not target object.    
+3-staticmethod  =This method doesn’t access class or instancedirectly it also uses a decorator @staticmethod
+#     def show(self):                                     # instance method 
+#         print(f"how are you your agger is {self.age}")
+
+#     @classmethod                                        # classmethod
+#     def hello(cls):
+#         print(f"how are you brother {cls.age}")
+
+#     @staticmethod                                        # staticmethod  
+#     def static():
+#         print("how are you")
+
+###### Inheritance  
+
+inherited class has all the powers of parent class that means all
+1=methods, 
+2=attributes
++ CODE REUSABILITY
+
+class A: def __init__(self): self.x=1               # Auto-inherited if no __init__
+class B(A): pass                                    # No super needed
+class C(A): def __init__(self): super().__init__()  # super() required
+
+Types of Inheritance===
+1= Single Inheritance)
+
+2=Multiple Inheritance= 2 parent classes and only 1 child class and  child class will inherit all
+ =constructor function will be inherited of the firstclass that has been Inherited. This is MRO(Method Resolution Order)
+class Father: 
+class Mother: 
+class Child(Father, Mother):
+        
+3=Multilevel Inheritance
+class Grandparent: heritage = lambda s: print("Heritage")
+class Parent(Grandparent): pass
+class Child(Parent): pass
+
+Method Overriding: Redefining a parent's method in the child class to change its behavior.
+
+interview q shortest form gpt on inheritance
+Q: Goal?
+A: Code reuse.
+
+Q: super()?
+A: Calls parent's __init__.
+
+Q: Overriding?
+A: Replacing parent methods.
+
+Q: MRO?
+A: Method search order.
+
+Q: Multiple?
+A: Python allows 2+ parents.
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -692,6 +760,7 @@ Subclass   | ✅  | ✅   | ❌
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
