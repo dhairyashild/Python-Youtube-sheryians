@@ -85,7 +85,8 @@ print(12 >20 and 123 > 100 and 34 == 34 and 45 < 90)    ==FALSE
 OR  ==== ANY 1 MUST TRUE
 
 ------------------------------------------------------------    2 hr notes            ----------------------------------------------------------------------------------
-# LOOPS
+------ 1. Formula: Last Value = Stop - Step (always works for any direction).   ##########################
+# LOOPS   
 FOR LOOP NOTES BELOW 4 LINES SARANSH - 
 
 range(start      ,stop+1,     step 1/-1 IF REVERSE)      =   range(stop)    ---- because start=1 & step=+1 is default ,u need just stop+1 value to give lke below
