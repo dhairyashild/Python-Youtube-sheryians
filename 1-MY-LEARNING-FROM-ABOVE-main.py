@@ -752,6 +752,49 @@ A: Method search order.
 
 Q: Multiple?
 A: Python allows 2+ parents.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------- Polymorphism = allows same  method name to behave differently
+
+Types of Polymorphism
+1-method overiding = CHILD class overides methos of PARENT class (IN 2 DIFFERENT CLASS THERE)
+
+class Animal:
+    def speak(self):
+        return "Generic sound"
+class Dog(Animal):
+    def speak(self):  #    Overriding parent method so this speak works not above works called method overiding
+        return "Woof!"
+
+2-DUCK TYPING = If 2 object has SAME  methods, you use it without checking its type or class
+class Duck:
+    def walk(self): print("Waddles")
+class Person:
+    def walk(self): print("Walking like a duck")
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation =Hiding data inside a class and accessing it only through methods.
+
+Access modifiers in python
+1-Public Attributes and Methods= VAR+ METHOD ALL CAN BE ACCESED OUTSIDE CLASS(IN CHILD CLASS)
+
+2-protected Attributes and Methods= NO USE JUST NAMING CONVENTION , CANT BALE TO HIDE  ANY VAR/METHOD
+
+3-Private Attributes and Method" =cannot be accessed from outside class — only from inside the class where it is defined
+
+class Demo:
+    def __init__(self):
+        self.name = "Public Member"   # Public
+        self._age = 21                # Protected (by convention)
+        self.__salary = 50000         # Private (name-mangled)
+
+    def show(self):
+        print("Public:", self.name)             ✅
+        print("Protected:", self._age)          ✅
+        print("Private:", self.__salary)        ONLY THIS ACCESED IN THIS BUT NOT IN CHILD CLASS     
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+ABSTRACT METHOD === TO SET RULES BEFORE CREATING CLASS
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
